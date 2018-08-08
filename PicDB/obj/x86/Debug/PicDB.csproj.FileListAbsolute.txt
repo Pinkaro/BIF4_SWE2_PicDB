@@ -1,0 +1,15 @@
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy\PicDB.exe
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy\PicDB.pdb
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\MainWindow.baml
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\MainWindow.g.cs
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\App.g.cs
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB_MarkupCompile.cache
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.g.resources
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.Properties.Resources.resources
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.csproj.GenerateResource.Cache
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.csproj.CoreCompileInputs.cache
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.exe
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.pdb
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.csprojAssemblyReference.cache
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.csproj.CopyComplete
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy\PicDB.exe.config
