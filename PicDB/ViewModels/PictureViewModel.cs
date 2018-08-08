@@ -1,0 +1,65 @@
+﻿using BIF.SWE2.Interfaces.Models;
+using BIF.SWE2.Interfaces.ViewModels;
+using PicDB.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using PicDB.utils;
+
+namespace PicDB.Models
+{
+    class PictureViewModel : ViewModelNotifier, IPictureViewModel
+    {
+        public PictureViewModel() { }
+
+        public PictureViewModel(IPictureModel model)
+        {
+            if (model != null)
+            {
+                ID = model.ID;
+                FileName = model.FileName;
+                FilePath = AssemblyHelper.PictureFolderPath + "\\" + FileName;
+                DisplayName = FileName.Split('.')[0];
+                string name = model.FileName;
+                string by = model.IPTC.ByLine;
+                DisplayName = name + " (by " + by + ")";
+            }
+        }
+
+        public PictureViewModel(PictureModel model)
+        {
+            if (model != null)
+            {
+                ID = model.ID;
+                FileName = model.FileName;
+                FilePath = AssemblyHelper.PictureFolderPath + "\\" + FileName;
+                DisplayName = FileName.Split('.')[0];
+                string name = model.FileName;
+                string by = model.IPTC.ByLine;
+                DisplayName = name + " (by " + by + ")";
+                
+                IPTC = new IPTCViewModel(model.IPTC);
+                EXIF = new EXIFViewModel(model.EXIF);
+                Photographer = new PhotographerViewModel(model.Photographer);
+                Camera = new CameraViewModel(model.Camera);
+            }
+        }
+
+        public int ID { get; set; }
+
+        public string FileName { get; set; }
+
+        public string FilePath { get; set; }
+
+        public string DisplayName { get; set; }
+
+        public IIPTCViewModel IPTC { get; set; }
+
+        public IEXIFViewModel EXIF { get; set; }
+
+        public IPhotographerViewModel Photographer { get; set; }
+
+        public ICameraViewModel Camera { get; set; }
+    }
+}
