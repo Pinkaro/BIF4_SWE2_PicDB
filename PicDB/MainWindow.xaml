@@ -117,7 +117,7 @@
                             <!-- ByLine -->
                             <StackPanel Grid.Row="1">
                                 <Label  Content="ByLine"/>
-                                <TextBox HorizontalAlignment="Stretch" Name="UI_IPTC_ByLine" Margin="5 0 5 10" Text="{Binding CurrentPicture.Photographer.}"></TextBox>
+                                <TextBox HorizontalAlignment="Stretch" Name="UI_IPTC_ByLine" Margin="5 0 5 10" Text="{Binding CurrentPicture.IPTC.ByLine}"></TextBox>
                             </StackPanel>
 
                             <!-- CopyrightNotice -->
