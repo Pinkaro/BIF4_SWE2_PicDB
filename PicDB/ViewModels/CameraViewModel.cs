@@ -15,18 +15,20 @@ namespace PicDB.ViewModels
 
         public CameraViewModel(ICameraModel model)
         {
+            if (model == null) return;
+            ID = model.ID;
             Producer = model.Producer;
             Make = model.Make;
             ISOLimitGood = model.ISOLimitGood;
             ISOLimitAcceptable = model.ISOLimitAcceptable;
+            Notes = model.Notes;
         }
 
-        public int ID => throw new NotImplementedException();
-
+        public int ID { get; set; }
         public string Producer { get; set; }
         public string Make { get; set; }
         public DateTime? BoughtOn { get; set; }
-        public string Notes { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Notes { get; set; }
 
         public int NumberOfPictures => throw new NotImplementedException();
 

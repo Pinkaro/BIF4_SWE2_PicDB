@@ -48,6 +48,15 @@ namespace PicDB
             _controller.SaveCurrentPicture();
         }
 
+        private void PictureSelection_OnSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (PictureSelection.SelectedItem is PictureViewModel)
+            {
+                _controller.CurrentPicture = (PictureViewModel)PictureSelection.SelectedItem;
+            }
+            
+        }
+
         /// <summary>
         /// TO MAYBO DO
         /// </summary>

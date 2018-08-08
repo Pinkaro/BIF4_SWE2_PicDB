@@ -15,34 +15,24 @@ namespace PicDB.Models
 
         public PictureViewModel(IPictureModel model)
         {
-            if (model != null)
-            {
-                ID = model.ID;
-                FileName = model.FileName;
-                FilePath = AssemblyHelper.PictureFolderPath + "\\" + FileName;
-                DisplayName = FileName.Split('.')[0];
-                string name = model.FileName;
-                string by = model.IPTC.ByLine;
-                DisplayName = name + " (by " + by + ")";
-            }
-        }
 
-        public PictureViewModel(PictureModel model)
-        {
-            if (model != null)
+            if (model is PictureModel)
             {
-                ID = model.ID;
-                FileName = model.FileName;
-                FilePath = AssemblyHelper.PictureFolderPath + "\\" + FileName;
-                DisplayName = FileName.Split('.')[0];
-                string name = model.FileName;
-                string by = model.IPTC.ByLine;
-                DisplayName = name + " (by " + by + ")";
-                
                 IPTC = new IPTCViewModel(model.IPTC);
                 EXIF = new EXIFViewModel(model.EXIF);
-                Photographer = new PhotographerViewModel(model.Photographer);
+                Photographer = new PhotographerViewModel(((PictureModel)model).Photographer);
                 Camera = new CameraViewModel(model.Camera);
+            }
+
+            if (model != null)
+            {
+                ID = model.ID;
+                FileName = model.FileName;
+                FilePath = GlobalInformation.Path + "\\" + FileName;
+                DisplayName = FileName.Split('.')[0];
+                string name = model.FileName;
+                string by = model.IPTC.ByLine;
+                DisplayName = name + " (by " + Photographer.FirstName + " " + Photographer.LastName + ")";
             }
         }
 

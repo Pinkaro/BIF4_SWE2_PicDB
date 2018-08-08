@@ -19,8 +19,9 @@ namespace Uebungen
 
         public IBusinessLayer GetBusinessLayer()
         {
-            BusinessLayer.Instance.Sync();
-            return BusinessLayer.Instance;
+            BusinessLayer bl = new BusinessLayer();
+            bl.Sync();
+            return bl;
         }
 
         public void TestSetup(string picturePath)
@@ -30,8 +31,9 @@ namespace Uebungen
 
         public IDataAccessLayer GetDataAccessLayer()
         {
-            BusinessLayer.Instance.Sync();
-            return BusinessLayer.Instance.MockDal;
+            BusinessLayer bl = new BusinessLayer();
+            bl.Sync();
+            return bl.DataAccessLayer;
         }
 
         public ISearchViewModel GetSearchViewModel()

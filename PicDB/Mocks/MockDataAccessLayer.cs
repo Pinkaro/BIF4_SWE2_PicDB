@@ -48,7 +48,7 @@ namespace PicDB.Mocks
         }
 
         public IEnumerable<ICameraModel> GetCameras()
-        { 
+        {
             return new List<ICameraModel>(cameras.Values);
         }
 
@@ -69,11 +69,11 @@ namespace PicDB.Mocks
 
         public IEnumerable<IPictureModel> GetPictures(string namePart, IPhotographerModel photographerParts, IIPTCModel iptcParts, IEXIFModel exifParts)
         {
-            if(namePart != null && namePart != string.Empty)
+            if (namePart != null && namePart != string.Empty)
             {
                 List<IPictureModel> filteredPictures = new List<IPictureModel>();
-                
-                foreach(KeyValuePair<int, IPictureModel> item in pictures)
+
+                foreach (KeyValuePair<int, IPictureModel> item in pictures)
                 {
                     if (item.Value.FileName.ToLower().Contains(namePart))
                     {

@@ -50,7 +50,7 @@ namespace PicDB.Models
             }
             set
             {
-                if (!string.IsNullOrEmpty(_producer))
+                if (!string.IsNullOrEmpty(value))
                 {
                     _producer = value;
                 }
@@ -71,7 +71,7 @@ namespace PicDB.Models
             }
             set
             {
-                if (!string.IsNullOrEmpty(_make))
+                if (!string.IsNullOrEmpty(value))
                 {
                     _make = value;
                 }

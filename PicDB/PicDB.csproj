@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GlobalInformation.cs" />
     <Compile Include="Layers\BusinessLayer.cs" />
     <Compile Include="Layers\DataAccessLayer.cs" />
     <Compile Include="Mocks\MockBusinessLayer.cs" />
@@ -70,7 +71,6 @@
     <Compile Include="Models\IPTCModel.cs" />
     <Compile Include="Models\PhotographerModel.cs" />
     <Compile Include="Models\PictureModel.cs" />
-    <Compile Include="utils\AssemblyHelper.cs" />
     <Compile Include="utils\Exceptions\PictureNotFoundException.cs" />
     <Compile Include="ViewModels\CameraListViewModel.cs" />
     <Compile Include="ViewModels\CameraViewModel.cs" />

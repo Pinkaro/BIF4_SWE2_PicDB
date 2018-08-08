@@ -6,12 +6,13 @@ using System.Linq;
 using System.Text;
 using PicDB.Layers;
 using PicDB.ViewModels;
+using BIF.SWE2.Interfaces.Models;
 
 namespace PicDB.Models
 {
     class MainWindowViewModel : ViewModelNotifier, IMainWindowViewModel
     {
-        private readonly BusinessLayer _businessLayer = BusinessLayer.Instance;
+        private readonly BusinessLayer _businessLayer = new BusinessLayer();
 
         private IPictureViewModel _currentPicture;
         public IPictureViewModel CurrentPicture
@@ -21,7 +22,8 @@ namespace PicDB.Models
             {
                 if (_currentPicture != value)
                 {
-                    _currentPicture = value;
+                    _currentPicture = new PictureViewModel(_businessLayer.GetPicture(value.ID));
+                    ((PictureListViewModel)List).CurrentPicture = _currentPicture;
                     Title = "PicDB - " + _currentPicture.DisplayName;
                     NotifyPropertyChanged(nameof(CurrentPicture));
                 }
@@ -51,10 +53,11 @@ namespace PicDB.Models
 
         public IPictureListViewModel List { get; set; } = new PictureListViewModel();
 
-        public ISearchViewModel Search { get; } = new SearchViewModel();
+        public ISearchViewModel Search { get; set; } = new SearchViewModel();
 
         public MainWindowViewModel()
         {
+            _businessLayer.Sync();
             CurrentPicture = List.CurrentPicture;
             Title = "PicDB - " + CurrentPicture.DisplayName;
         }

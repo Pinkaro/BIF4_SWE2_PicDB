@@ -20,8 +20,9 @@ namespace Uebungen
 
         public IBusinessLayer GetBusinessLayer()
         {
-            BusinessLayer.Instance.Sync();
-            return BusinessLayer.Instance;
+            BusinessLayer bl = new BusinessLayer();
+            bl.Sync();
+            return bl;
         }
 
         public void TestSetup(string picturePath)

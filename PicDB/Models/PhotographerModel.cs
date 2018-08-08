@@ -11,7 +11,7 @@ namespace PicDB.Models
     {
         public PhotographerModel()
         {
-            ID = NextID++;
+
         }
 
         public PhotographerModel(int ID)
@@ -27,8 +27,6 @@ namespace PicDB.Models
             BirthDay = viewModel.BirthDay;
             Notes = viewModel.Notes;
         }
-
-        protected static int NextID = 1;
         public int ID { get; set; }
 
         private string _firstName;
@@ -65,7 +63,7 @@ namespace PicDB.Models
             }
             set
             {
-                if (!string.IsNullOrEmpty(_lastName))
+                if (!string.IsNullOrEmpty(value))
                 {
                     _lastName = value;
                 }

@@ -13,7 +13,6 @@ namespace PicDB.Models
         public PictureModel()
         {
             IPTC = new IPTCModel();
-            ID = NextId++;
             IPTC = new IPTCModel();
             EXIF = new EXIFModel();
             Camera = new CameraModel();
@@ -29,6 +28,11 @@ namespace PicDB.Models
             Camera = new CameraModel();
         }
 
+        public PictureModel(string FileName)
+        {
+            this.FileName = FileName;
+        }
+
         public PictureModel(IPictureViewModel viewModel)
         {
             ID = viewModel.ID;
@@ -38,8 +42,6 @@ namespace PicDB.Models
             Camera = new CameraModel(viewModel.Camera);
             Photographer = new PhotographerModel(viewModel.Photographer);
         }
-
-        protected static int NextId = 1;
 
         public int ID { get; set; }
         public string FileName { get; set; }

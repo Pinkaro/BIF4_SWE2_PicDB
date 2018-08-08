@@ -15,7 +15,7 @@ namespace Uebungen
 {
     public class UEB2 : IUEB2
     {
-        BusinessLayer businessLayer = BusinessLayer.Instance;
+        BusinessLayer businessLayer = new BusinessLayer();
 
         public UEB2()
         {
@@ -53,7 +53,7 @@ namespace Uebungen
 
         public void TestSetup(string picturePath)
         {
-            businessLayer.FilePath = picturePath;
+            businessLayer.PathFolder = picturePath;
         }
 
         public ICameraModel GetCameraModel(string producer, string make)

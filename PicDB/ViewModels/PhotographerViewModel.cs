@@ -11,6 +11,7 @@ namespace PicDB.Models
     {
         public PhotographerViewModel(IPhotographerModel mdl)
         {
+            if (mdl == null) return; 
             FirstName = mdl.FirstName;
             LastName = mdl.LastName;
             BirthDay = mdl.BirthDay;

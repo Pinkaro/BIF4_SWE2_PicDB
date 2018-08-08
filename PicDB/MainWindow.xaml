@@ -117,7 +117,7 @@
                             <!-- ByLine -->
                             <StackPanel Grid.Row="1">
                                 <Label  Content="ByLine"/>
-                                <TextBox HorizontalAlignment="Stretch" Name="UI_IPTC_ByLine" Margin="5 0 5 10" Text="{Binding CurrentPicture.IPTC.ByLine}"></TextBox>
+                                <TextBox HorizontalAlignment="Stretch" Name="UI_IPTC_ByLine" Margin="5 0 5 10" Text="{Binding CurrentPicture.Photographer.}"></TextBox>
                             </StackPanel>
 
                             <!-- CopyrightNotice -->
@@ -209,7 +209,8 @@
         <!-- PictureSelection -->
         <ListBox  Grid.Row="5" ItemsSource="{Binding Path=List.List}" SelectedItem="{Binding CurrentPicture}"
                   ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
-                  ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch">
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch"
+                  Name="PictureSelection" SelectionChanged="PictureSelection_OnSelectionChanged">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"></VirtualizingStackPanel>

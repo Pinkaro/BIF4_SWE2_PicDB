@@ -20,7 +20,7 @@ namespace Uebungen
         {
             PictureModel mockPicture = new PictureModel() { FileName = "Blume.jpg" };
 
-            IBusinessLayer bl = BusinessLayer.Instance;
+            IBusinessLayer bl = new BusinessLayer();
             bl.Sync();
             bl.Save(mockPicture);
             return bl;

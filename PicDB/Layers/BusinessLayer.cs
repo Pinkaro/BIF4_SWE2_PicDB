@@ -1,179 +1,157 @@
-﻿using BIF.SWE2.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using BIF.SWE2.Interfaces;
 using BIF.SWE2.Interfaces.Models;
-using System.IO;
+using BIF.SWE2.Interfaces.ViewModels;
 using PicDB.Models;
-using System.Reflection;
-using PicDB.Mocks;
-using PicDB.utils;
-using PicDB.utils.Exceptions;
-using System.Windows.Media.Imaging;
 
 namespace PicDB.Layers
 {
-    public class BusinessLayer : IBusinessLayer
+    class BusinessLayer : IBusinessLayer
     {
-        /// <summary>
-        /// Path to pictures
-        /// </summary>
-        public string FilePath;
-        private MockDataAccessLayer _dal;
-        public MockDataAccessLayer MockDal
+        public IDataAccessLayer DataAccessLayer;
+        public string PathFolder;
+        public BusinessLayer()
         {
-            get { return _dal;  }
+            DataAccessLayer = new DataAccessLayer();
+            GlobalInformation.ReadConfigFile();
+            PathFolder = GlobalInformation.Path;
         }
 
-        private static BusinessLayer _instance;
-        private static object lazy_lock = new Object();
-
-        public static BusinessLayer Instance
+        public BusinessLayer(IDataAccessLayer al, string picturesPathFolderPath)
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    lock (lazy_lock)
-                    {
-                        if (_instance == null)
-                        {
-                            _instance = new BusinessLayer();
-                            _instance.Sync();
-                        }
-                    }
-                }
-                return _instance;
-            }
-        }
-
-        private BusinessLayer()
-        {
-            _dal = new MockDataAccessLayer();
-            FilePath = AssemblyHelper.PictureFolderPath;
-        }
-
-        private BusinessLayer(string path)
-        {
-            _dal = new MockDataAccessLayer();
-            FilePath = path;
-        }
-
-        public void DeletePhotographer(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeletePicture(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEXIFModel ExtractEXIF(string filename)
-        {
-            IEnumerable<IPictureModel> pictures = _dal.GetPictures(null, null, null, null);
-            IEXIFModel exifModel = null;
-
-            foreach(IPictureModel picture in pictures)
-            {
-                if (picture.FileName.Equals(filename))
-                {
-                    exifModel = picture.EXIF;
-                }
-            }
-
-            if(exifModel == null)
-            {
-                throw new PictureNotFoundException("\"" + filename + "\" does not exist.");
-            }
-
-            return exifModel;
-        }
-
-        public IIPTCModel ExtractIPTC(string filename)
-        {
-            IEnumerable<IPictureModel> pictures = _dal.GetPictures(null, null, null, null);
-            IIPTCModel iptcModel = null;
-
-            foreach (IPictureModel picture in pictures)
-            {
-                if (picture.FileName.Equals(filename))
-                {
-                    iptcModel = picture.IPTC;
-                }
-            }
-
-            if (iptcModel == null)
-            {
-                throw new PictureNotFoundException("\"" + filename + "\" does not exist.");
-            }
-
-            return iptcModel;
-        }
-
-        public ICameraModel GetCamera(int ID)
-        {
-            return _dal.GetCamera(ID);
-        }
-
-        public IEnumerable<ICameraModel> GetCameras()
-        {
-            return _dal.GetCameras();
-        }
-
-        public IPhotographerModel GetPhotographer(int ID)
-        {
-            return _dal.GetPhotographer(ID);
-        }
-
-        public IEnumerable<IPhotographerModel> GetPhotographers()
-        {
-            return _dal.GetPhotographers();
-        }
-
-        public IPictureModel GetPicture(int ID)
-        {
-            return _dal.GetPicture(ID);
+            this.DataAccessLayer = al;
+            this.PathFolder = picturesPathFolderPath;
         }
 
         public IEnumerable<IPictureModel> GetPictures()
         {
-            return _dal.GetPictures(null, null, null, null);
+            return DataAccessLayer.GetPictures(null, null, null, null);
         }
 
-        public IEnumerable<IPictureModel> GetPictures(string namePart, IPhotographerModel photographerParts, IIPTCModel iptcParts, IEXIFModel exifParts)
+        public IEnumerable<IPictureModel> GetPictures(string namePart, IPhotographerModel photographerParts, IIPTCModel iptcParts,
+            IEXIFModel exifParts)
         {
-            return _dal.GetPictures(namePart, photographerParts, iptcParts, exifParts);
+            return DataAccessLayer.GetPictures(namePart, photographerParts, iptcParts, exifParts);
+        }
+
+        public IPictureModel GetPicture(int ID)
+        {
+            return DataAccessLayer.GetPicture(ID);
         }
 
         public void Save(IPictureModel picture)
         {
-            _dal.Save(picture);
+            DataAccessLayer.Save(picture);
         }
 
-        public void Save(IPhotographerModel photographer)
+        public void DeletePicture(int ID)
         {
-            _dal.Save(photographer);
+            DataAccessLayer.DeletePicture(ID);
         }
 
         public void Sync()
         {
-            int ID = 999;
-
-            //FilePath = "./Pictures";
-            foreach (string file in Directory.EnumerateFiles(FilePath))
+            //Alle Filenamen holen die sich im angegebenen Verzeichnis finden
+            IEnumerable<string> pathFiles = Directory.EnumerateFiles(PathFolder);
+            //Erstelle eine Liste und füge mit einer foreach Schleife die gefunden Files von pathFiles und füge die einzelnen Elemente der Liste hinzu
+            var files = new HashSet<string>(pathFiles.Select(Path.GetFileName)); 
+            
+            //Erstelle eine Liste von allen Bilder, welche sich in der Datenbank befinden
+            List<IPictureModel> pictures = DataAccessLayer.GetPictures(null, null, null, null).ToList();
+ 
+            foreach (var pictureModel in pictures)
             {
-                IPictureModel pictureModel = new PictureModel(ID--);
-                pictureModel.FileName = file.Substring(file.LastIndexOf("\\") + 1);
-
-                _dal.Save(pictureModel);
+                //Falls das Bild aus der Datenbank nicht im Ordner ist, Lösche es aus der Datenbank
+                if (!files.Contains(pictureModel.FileName))
+                {
+                    DeletePicture(pictureModel.ID);
+                }
+                //falls es bereits synchronisiert ist dann lösche es aus den zu synchronisierenden Files raus
+                else
+                {
+                    files.Remove(pictureModel.FileName);
+                }
             }
+
+            //Alle Files die noch nicht mit dem Ordner synchronisiert sind, zur Datenbank hinzufügen
+            foreach (var filename in files)
+            {
+                IPictureModel pictureModel = new PictureModel(filename);
+                pictureModel.EXIF = ExtractEXIF(filename);
+                pictureModel.IPTC = ExtractIPTC(filename);
+                Save(pictureModel);
+            }
+        }
+
+        public IEnumerable<IPhotographerModel> GetPhotographers()
+        {
+            return DataAccessLayer.GetPhotographers();
+        }
+
+        public IPhotographerModel GetPhotographer(int ID)
+        {
+            return DataAccessLayer.GetPhotographer(ID);
+        }
+
+        public void Save(IPhotographerModel photographer)
+        {
+            DataAccessLayer.Save(photographer);
+        }
+
+        public void DeletePhotographer(int ID)
+        {
+            DataAccessLayer.DeletePhotographer(ID);
+        }
+
+        public IIPTCModel ExtractIPTC(string filename)
+        {
+            var iptcData = new IPTCModel();
+            IEnumerable<string> pathFiles = Directory.EnumerateFiles(PathFolder);
+            if (!pathFiles.Contains(Path.Combine(PathFolder, filename))) throw new FileNotFoundException();
+            iptcData.ByLine = "ByLine";
+            iptcData.Caption = "caption";
+            iptcData.CopyrightNotice = "this is my shit - bro!";
+            iptcData.Headline = "I'm the Head";
+            iptcData.Keywords = "Blame on me";
+            return iptcData;
+        }
+
+        public IEXIFModel ExtractEXIF(string filename)
+        {
+            var exifData = new EXIFModel();
+            IEnumerable<string> pathFiles = Directory.EnumerateFiles(PathFolder);
+            if (!pathFiles.Contains(Path.Combine(PathFolder, filename))) throw new FileNotFoundException();
+            exifData.ExposureProgram = ExposurePrograms.CreativeProgram;
+            exifData.ExposureTime = 10;
+            exifData.FNumber = 2;
+            exifData.Flash = true;
+            exifData.ISOValue = 8008;
+            exifData.Make = "Make";
+            return exifData;
         }
 
         public void WriteIPTC(string filename, IIPTCModel iptc)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<ICameraModel> GetCameras()
+        {
+            return DataAccessLayer.GetCameras();
+        }
+
+        public ICameraModel GetCamera(int ID)
+        {
+            return DataAccessLayer.GetCamera(ID);
+        }
+
+        public void CurrentPictureChanged(IPictureViewModel currentPicture)
+        {
+            
         }
     }
 }

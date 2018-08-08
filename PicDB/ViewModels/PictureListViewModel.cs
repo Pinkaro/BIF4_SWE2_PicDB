@@ -13,14 +13,16 @@ namespace PicDB.ViewModels
     {
         public PictureListViewModel()
         {
-            var pictures = BusinessLayer.Instance.GetPictures();
+            var pictures = new BusinessLayer().GetPictures();
 
             foreach (IPictureModel model in pictures)
             {
                 _list.Add(new PictureViewModel((PictureModel)model));
             }
 
-            CurrentPicture = _list.First();
+            BusinessLayer bl = new BusinessLayer();
+            int firstModelID = _list.First().ID;
+            CurrentPicture = new PictureViewModel(bl.GetPicture(firstModelID));
         }
 
         public IEnumerable<IPictureViewModel> PrevPictures => throw new NotImplementedException();
