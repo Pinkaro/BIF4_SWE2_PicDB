@@ -17,7 +17,6 @@ namespace PicDB.Layers
         public BusinessLayer()
         {
             DataAccessLayer = new DataAccessLayer();
-            GlobalInformation.ReadConfigFile();
             PathFolder = GlobalInformation.Path;
         }
 

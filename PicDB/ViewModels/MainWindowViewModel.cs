@@ -57,7 +57,6 @@ namespace PicDB.Models
 
         public MainWindowViewModel()
         {
-            _businessLayer.Sync();
             CurrentPicture = List.CurrentPicture;
             Title = "PicDB - " + CurrentPicture.DisplayName;
         }

@@ -36,11 +36,9 @@
         </Menu>
         
         <!-- SearchBar -->
-        <TextBox Grid.Row="1">
-            
-        </TextBox>
+        <TextBox Grid.Row="1" Name="Searchbar" GotFocus="Searchbar_GotFocus" LostFocus="Searchbar_LostFocus" SelectionChanged="Searchbar_SelectionChanged"/>
 
-        <!-- PictureView / Info  -->
+            <!-- PictureView / Info  -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/> <!-- PicturePreview -->
@@ -138,7 +136,7 @@
                                 <TextBox HorizontalAlignment="Stretch" Name="UI_IPTC_Caption" Margin="5 0 5 10" Text="{Binding CurrentPicture.IPTC.Caption}"></TextBox>
                             </StackPanel>
                             
-                            <Button Grid.Row="5" Name="BtnSaveIPTC" Click="BtnSaveIPTC_Click" Margin="100 10 100 0">Save</Button>
+                            <Button Grid.Row="5" Name="BtnSaveIPTC" Click="BtnSaveIPTC_Click" HorizontalAlignment="Center" Width="100">Save</Button>
                         </Grid>
                     </DockPanel>
                 </TabItem>

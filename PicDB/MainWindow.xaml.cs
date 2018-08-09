@@ -17,6 +17,7 @@ using BIF.SWE2.Interfaces.ViewModels;
 using PicDB.Layers;
 using PicDB.Models;
 using PicDB.utils;
+using PicDB.ViewModels;
 
 namespace PicDB
 {
@@ -25,14 +26,17 @@ namespace PicDB
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainWindowViewModel _controller;
+        private readonly MainWindowViewModel _controller;
 
         public MainWindow()
         {
+            GlobalInformation.ReadConfigFile();
             InitializeComponent();
 
             _controller = new MainWindowViewModel();
             this.DataContext = _controller;
+            Searchbar.Foreground = Brushes.DimGray;
+            Searchbar.Text = "Search picture";
         }
 
         private void BtnSaveIPTC_Click(object sender, RoutedEventArgs e)
@@ -55,6 +59,42 @@ namespace PicDB
                 _controller.CurrentPicture = (PictureViewModel)PictureSelection.SelectedItem;
             }
             
+        }
+
+        private void Searchbar_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            ((PictureListViewModel)_controller.List).ResetList();
+            if (Searchbar.IsFocused)
+            {
+                ObservableCollection<IPictureViewModel> filteredList = new ObservableCollection<IPictureViewModel>();
+                foreach (IPictureViewModel viewModel in _controller.List.List)
+                {
+                    if (viewModel.FileName.Contains(Searchbar.Text))
+                    {
+                        filteredList.Add(viewModel);
+                    }
+                }
+
+                ((PictureListViewModel)_controller.List).List = filteredList;
+            }
+        }
+
+        private void Searchbar_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Searchbar.Text) && Searchbar.Foreground == Brushes.DimGray)
+            {
+                Searchbar.Text = string.Empty;
+                Searchbar.Foreground = Brushes.Black;
+            }
+        }
+
+        private void Searchbar_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Searchbar.Text))
+            {
+                Searchbar.Foreground = Brushes.DimGray;
+                Searchbar.Text = "Search picture";
+            }
         }
 
         /// <summary>
