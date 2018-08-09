@@ -4,17 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PicDB.ViewModels;
 
 namespace PicDB.Models
 {
-    class PhotographerViewModel : PhotographerListViewModel, IPhotographerViewModel
+    class PhotographerViewModel : IPhotographerViewModel
     {
         public PhotographerViewModel(IPhotographerModel mdl)
         {
-            if (mdl == null) return; 
+            if (mdl == null) return;
+            ID = mdl.ID;
             FirstName = mdl.FirstName;
             LastName = mdl.LastName;
             BirthDay = mdl.BirthDay;
+            Notes = mdl.Notes;
         }
 
         public PhotographerViewModel() { }

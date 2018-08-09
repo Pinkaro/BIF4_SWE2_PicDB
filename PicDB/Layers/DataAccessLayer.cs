@@ -15,7 +15,6 @@ namespace PicDB.Layers
 
         public DataAccessLayer()
         {
-            GlobalInformation.ReadConfigFile();
             ConnectionString = GlobalInformation.ConnectionString;
         }
 
@@ -85,8 +84,8 @@ namespace PicDB.Layers
                     picture.FileName = reader["FileName"].ToString(); //NOT NULL in der Datenbank
 
                     //Speicher die IDs für späteres hinzufügen zur Instanz vom PictureModel
-                    if(reader["fk_Camera"] != DBNull.Value) camID = int.Parse(reader["fk_Camera"].ToString()); //NOT NUll in der Datenbank
-                    if(reader["fk_Photographer"] != DBNull.Value) photogrID = int.Parse(reader["fk_Photographer"].ToString()); //Not Null in der Datenbank
+                    if (reader["fk_Camera"] != DBNull.Value) camID = int.Parse(reader["fk_Camera"].ToString()); //NOT NUll in der Datenbank
+                    if (reader["fk_Photographer"] != DBNull.Value) photogrID = int.Parse(reader["fk_Photographer"].ToString()); //Not Null in der Datenbank
 
                     if (reader["ByLine"] != DBNull.Value) picture.IPTC.ByLine = reader["ByLine"].ToString();
                     if (reader["Caption"] != DBNull.Value) picture.IPTC.Caption = reader["Caption"].ToString();
@@ -103,9 +102,9 @@ namespace PicDB.Layers
                 }
             }
 
-            if(camID != -1) picture.Camera = GetCamera(camID);
+            if (camID != -1) picture.Camera = GetCamera(camID);
             else picture.Camera = new CameraModel();
-            if(photogrID != -1) picture.Photographer = GetPhotographer(photogrID);
+            if (photogrID != -1) picture.Photographer = GetPhotographer(photogrID);
             else picture.Photographer = new PhotographerModel();
 
 
@@ -126,7 +125,7 @@ namespace PicDB.Layers
                     command.CommandText = "Select fk_IPTC FROM PictureModel " +
                         "Where ID = @id;";
 
-                    var idParam = new SqlParameter("@id", SqlDbType.Int){ Value = picture.ID};
+                    var idParam = new SqlParameter("@id", SqlDbType.Int) { Value = picture.ID };
                     command.Parameters.Add(idParam);
 
                     // Call Prepare after setting the Commandtext and Parameters.
@@ -165,6 +164,31 @@ namespace PicDB.Layers
 
                     // Change parameter values and call ExecuteNonQuery.
                     command.ExecuteScalar();
+
+                    var pictureModel = (PictureModel)picture;
+
+                    if (pictureModel.Photographer != null)
+                    {
+                        command.CommandText = "Update dbo.PictureModel SET fk_Photographer = @fk_photo WHERE ID = @id";
+                        var paramCamID = new SqlParameter("@fk_photo", SqlDbType.Int) { Value = pictureModel.Photographer.ID };
+
+                        command.Parameters.Add(paramCamID);
+                        command.Prepare();
+                        command.ExecuteScalar();
+
+                    }
+
+                    if (pictureModel.Camera != null)
+                    {
+
+                        command.CommandText = "Update dbo.PictureModel SET fk_Camera = @fk_Cam WHERE ID = @id";
+                        var paramCamID = new SqlParameter("@fk_Cam", SqlDbType.Int) { Value = pictureModel.Camera.ID };
+
+                        command.Parameters.Add(paramCamID);
+                        command.Prepare();
+                        command.ExecuteScalar();
+                    }
+
                     connection.Close();
                 }
             }
@@ -318,13 +342,12 @@ namespace PicDB.Layers
             }
             else
             {
-                query = "INSERT INTO dbo.PhotographerModel(ID, FirstName, LastName, Birthday, Notes)"
-                        + "VALUES(@id, @firstname, @lastname, @birthday, @notes);";
+                query = "INSERT INTO dbo.PhotographerModel(FirstName, LastName, Birthday, Notes)"
+                        + "VALUES(@firstname, @lastname, @birthday, @notes);";
 
             }
 
             // Create and prepare an SQL statement.
-            var idParam = new SqlParameter("@id", SqlDbType.Int) { Value = photographer.ID };
             var firstnameParam =
                 new SqlParameter("@firstname", SqlDbType.VarChar, 100) { Value = photographer.FirstName };
             var lastnameParam =
@@ -341,7 +364,6 @@ namespace PicDB.Layers
                     CommandText = query
                 };
 
-                command.Parameters.Add(idParam);
                 command.Parameters.Add(firstnameParam);
                 command.Parameters.Add(lastnameParam);
                 command.Parameters.Add(birthdayParam);
@@ -416,7 +438,7 @@ namespace PicDB.Layers
                 $"Select ID, Producer, Make, BoughtOn, Notes, ISOLimitGood, ISOLimitAcceptable from CameraModel"
                 + " WHERE ID = @id;";
 
-            SqlParameter idparam = new SqlParameter("@id", SqlDbType.Int) {Value = ID};
+            SqlParameter idparam = new SqlParameter("@id", SqlDbType.Int) { Value = ID };
 
             var model = new CameraModel();
 

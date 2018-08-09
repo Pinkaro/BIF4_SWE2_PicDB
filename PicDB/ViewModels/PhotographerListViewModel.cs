@@ -1,15 +1,36 @@
-﻿using BIF.SWE2.Interfaces.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using BIF.SWE2.Interfaces.ViewModels;
+using PicDB.Layers;
+using PicDB.Models;
 
-namespace PicDB.Models
+namespace PicDB.ViewModels
 {
-    class PhotographerListViewModel : IPhotographerListViewModel
+    class PhotographerListViewModel : ViewModelNotifier, IPhotographerListViewModel
     {
-        public IPhotographerViewModel CurrentPhotographer => throw new NotImplementedException();
+        public IEnumerable<IPhotographerViewModel> List { get; }
 
-        IEnumerable<IPhotographerViewModel> IPhotographerListViewModel.List => throw new NotImplementedException();
+        public IPhotographerViewModel CurrentPhotographer
+        {
+            get => CurrentPhotographer;
+            set
+            {
+                CurrentPhotographer = value;
+                NotifyPropertyChanged("CurrentPhotographer");
+            }
+        }
+
+        public PhotographerListViewModel()
+        {
+            var bl = new BusinessLayer();
+            var photographerModels = bl.GetPhotographers();
+            var photogrViewModels = new ObservableCollection<IPhotographerViewModel>();
+            foreach (var photographerModel in photographerModels)
+            {
+                photogrViewModels.Add(new PhotographerViewModel(photographerModel));
+            }
+
+            List = photogrViewModels;
+        }
     }
 }

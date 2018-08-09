@@ -4,12 +4,18 @@
         Title="{Binding Path=Title}" Height="700" Width="1050">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>  <!-- Menu -->
-            <RowDefinition Height="20"/>  <!-- SearchBar -->
-            <RowDefinition Height="2*"/>  <!-- PictureView / Info -->
-            <RowDefinition Height="5"/>   <!-- GridSplitter Horizontal -->
-            <RowDefinition Height="0*"/>  <!-- GridSplitter barrier -->
-            <RowDefinition Height="130"/> <!-- PictureSelection -->
+            <RowDefinition Height="20"/>
+            <!-- Menu -->
+            <RowDefinition Height="20"/>
+            <!-- SearchBar -->
+            <RowDefinition Height="2*"/>
+            <!-- PictureView / Info -->
+            <RowDefinition Height="5"/>
+            <!-- GridSplitter Horizontal -->
+            <RowDefinition Height="0*"/>
+            <!-- GridSplitter barrier -->
+            <RowDefinition Height="130"/>
+            <!-- PictureSelection -->
         </Grid.RowDefinitions>
         <!-- Menu -->
         <Menu Grid.Row="0"  DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top">
@@ -34,24 +40,28 @@
                 <MenuItem Header="_About"></MenuItem>
             </MenuItem>
         </Menu>
-        
+
         <!-- SearchBar -->
         <TextBox Grid.Row="1" Name="Searchbar" GotFocus="Searchbar_GotFocus" LostFocus="Searchbar_LostFocus" SelectionChanged="Searchbar_SelectionChanged"/>
 
-            <!-- PictureView / Info  -->
+
+        <!-- PictureView / Info  -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/> <!-- PicturePreview -->
-                <ColumnDefinition Width="5"/>  <!-- GridSplitter Vertical -->
-                <ColumnDefinition Width="*"/>  <!-- InformationContainer -->
+                <ColumnDefinition Width="2*"/>
+                <!-- PicturePreview -->
+                <ColumnDefinition Width="5"/>
+                <!-- GridSplitter Vertical -->
+                <ColumnDefinition Width="*"/>
+                <!-- InformationContainer -->
             </Grid.ColumnDefinitions>
-            
+
             <!-- PicturePreview -->
             <Image Grid.Column="0" Name="PicturePreview" Source="{Binding CurrentPicture.FilePath}"></Image>
 
             <!-- GridSplitter Vertical -->
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"></GridSplitter>
-             
+
             <!-- InformationContainer -->
             <TabControl Grid.Column="2">
                 <TabItem Header="General">
@@ -163,14 +173,20 @@
                     <DockPanel>
                         <Grid DockPanel.Dock="Top">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/> <!-- Keywords -->
-                                <RowDefinition Height="auto"/> <!-- ByLine -->
-                                <RowDefinition Height="auto"/> <!-- CopyrightNotice -->
-                                <RowDefinition Height="auto"/> <!-- Headline -->
-                                <RowDefinition Height="auto"/> <!-- Caption -->
-                                <RowDefinition Height="auto"/> <!-- Save button -->
+                                <RowDefinition Height="auto"/>
+                                <!-- Keywords -->
+                                <RowDefinition Height="auto"/>
+                                <!-- ByLine -->
+                                <RowDefinition Height="auto"/>
+                                <!-- CopyrightNotice -->
+                                <RowDefinition Height="auto"/>
+                                <!-- Headline -->
+                                <RowDefinition Height="auto"/>
+                                <!-- Caption -->
+                                <RowDefinition Height="auto"/>
+                                <!-- Save button -->
                             </Grid.RowDefinitions>
-                            
+
                             <!-- Keywords -->
                             <StackPanel Grid.Row="0">
                                 <Label  Content="Keywords"/>
@@ -200,8 +216,8 @@
                                 <Label  Content="Caption"/>
                                 <TextBox HorizontalAlignment="Stretch" Name="UI_IPTC_Caption" Margin="5 0 5 10" Text="{Binding CurrentPicture.IPTC.Caption}"></TextBox>
                             </StackPanel>
-                            
-                            <Button Grid.Row="5" Name="BtnSaveIPTC" Click="BtnSaveIPTC_Click" HorizontalAlignment="Center" Width="100">Save</Button>
+
+                            <Button Grid.Row="5" Name="BtnSaveIPTC" Click="BtnSaveIPTC_Click" HorizontalAlignment="Center" Width="90">Save</Button>
                         </Grid>
                     </DockPanel>
                 </TabItem>
@@ -210,7 +226,8 @@
                     <DockPanel>
                         <Grid DockPanel.Dock="Top">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/> <!-- Make -->
+                                <RowDefinition Height="auto"/>
+                                <!-- Make -->
                                 <RowDefinition Height="auto"/>
                                 <!-- FNumber -->
                                 <RowDefinition Height="auto"/>
@@ -221,7 +238,8 @@
                                 <!-- Flash -->
                                 <RowDefinition Height="auto"/>
                                 <!-- ExposureProgram -->
-                                <RowDefinition Height="auto"/> <!-- ExposureProgramResource -->
+                                <RowDefinition Height="auto"/>
+                                <!-- ExposureProgramResource -->
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -265,7 +283,7 @@
 
         <!-- GridSplitter Horizontal -->
         <GridSplitter Grid.Row="3" Height="5" HorizontalAlignment="Stretch"></GridSplitter>
-        
+
         <!-- GridSplitter barrier -->
         <Border Grid.Row="4" HorizontalAlignment="Stretch"></Border>
 

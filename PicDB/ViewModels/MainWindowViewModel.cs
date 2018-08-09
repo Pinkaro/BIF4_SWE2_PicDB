@@ -58,6 +58,10 @@ namespace PicDB.Models
 
         public ISearchViewModel Search { get; set; } = new SearchViewModel();
 
+        public ICameraListViewModel CameraList { get; set; } = new CameraListViewModel();
+
+        public IPhotographerListViewModel PhotographerList { get; set; } = new PhotographerListViewModel();
+
         public MainWindowViewModel()
         {
             CurrentPicture = List.CurrentPicture;
