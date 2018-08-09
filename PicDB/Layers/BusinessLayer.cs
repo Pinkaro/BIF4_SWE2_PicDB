@@ -55,7 +55,7 @@ namespace PicDB.Layers
         public void Sync()
         {
             //Alle Filenamen holen die sich im angegebenen Verzeichnis finden
-            IEnumerable<string> pathFiles = Directory.EnumerateFiles(PathFolder);
+            IEnumerable<string> pathFiles = Directory.EnumerateFiles(GlobalInformation.Path);
             //Erstelle eine Liste und füge mit einer foreach Schleife die gefunden Files von pathFiles und füge die einzelnen Elemente der Liste hinzu
             var files = new HashSet<string>(pathFiles.Select(Path.GetFileName)); 
             
@@ -109,8 +109,8 @@ namespace PicDB.Layers
         public IIPTCModel ExtractIPTC(string filename)
         {
             var iptcData = new IPTCModel();
-            IEnumerable<string> pathFiles = Directory.EnumerateFiles(PathFolder);
-            if (!pathFiles.Contains(Path.Combine(PathFolder, filename))) throw new FileNotFoundException();
+            IEnumerable<string> pathFiles = Directory.EnumerateFiles(GlobalInformation.Path);
+            if (!pathFiles.Contains(Path.Combine(GlobalInformation.Path, filename))) throw new FileNotFoundException();
             iptcData.ByLine = "ByLine";
             iptcData.Caption = "caption";
             iptcData.CopyrightNotice = "this is my shit - bro!";
@@ -122,8 +122,8 @@ namespace PicDB.Layers
         public IEXIFModel ExtractEXIF(string filename)
         {
             var exifData = new EXIFModel();
-            IEnumerable<string> pathFiles = Directory.EnumerateFiles(PathFolder);
-            if (!pathFiles.Contains(Path.Combine(PathFolder, filename))) throw new FileNotFoundException();
+            IEnumerable<string> pathFiles = Directory.EnumerateFiles(GlobalInformation.Path);
+            if (!pathFiles.Contains(Path.Combine(GlobalInformation.Path, filename))) throw new FileNotFoundException();
             exifData.ExposureProgram = ExposurePrograms.CreativeProgram;
             exifData.ExposureTime = 10;
             exifData.FNumber = 2;

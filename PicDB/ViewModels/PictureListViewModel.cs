@@ -11,20 +11,11 @@ namespace PicDB.ViewModels
 {
     class PictureListViewModel : ViewModelNotifier, IPictureListViewModel
     {
+        private BusinessLayer bl;
         public PictureListViewModel()
         {
-            BusinessLayer bl = new BusinessLayer();
-            bl.Sync();
-            var pictures = bl.GetPictures();
-
-            foreach (IPictureModel model in pictures)
-            {
-                _list.Add(new PictureViewModel((PictureModel)model));
-            }
-            _backupList = new ObservableCollection<IPictureViewModel>(_list);
-
-            int firstModelID = _list.First().ID;
-            CurrentPicture = new PictureViewModel(bl.GetPicture(firstModelID));
+            bl = new BusinessLayer();
+            SyncAndUpdatePictureList();
         }
 
         public IEnumerable<IPictureViewModel> PrevPictures => throw new NotImplementedException();
@@ -67,6 +58,22 @@ namespace PicDB.ViewModels
         public void ResetList()
         {
             _list = new ObservableCollection<IPictureViewModel>(_backupList);
+        }
+
+        public void SyncAndUpdatePictureList()
+        {
+            bl.Sync();
+            var pictures = bl.GetPictures();
+            CurrentPicture = null;
+            _list.Clear();
+            foreach (IPictureModel model in pictures)
+            {
+                _list.Add(new PictureViewModel((PictureModel)model));
+            }
+            _backupList = new ObservableCollection<IPictureViewModel>(_list);
+
+            int firstModelID = _list.First().ID;
+            CurrentPicture = new PictureViewModel(bl.GetPicture(firstModelID));
         }
     }
 }
