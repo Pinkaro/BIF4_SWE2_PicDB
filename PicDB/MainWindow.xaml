@@ -55,43 +55,108 @@
             <!-- InformationContainer -->
             <TabControl Grid.Column="2">
                 <TabItem Header="General">
-                    <DockPanel>
-                        <Grid DockPanel.Dock="Top">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DockPanel Grid.Row="0">
+                            <Grid DockPanel.Dock="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <!-- Name -->
+                                    <RowDefinition Height="auto"/>
+                                    <!-- Photographer -->
+                                    <RowDefinition Height="auto"/>
+                                    <!-- Camera -->
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <!-- Labels -->
+                                    <ColumnDefinition Width="*"/>
+                                    <!-- Values -->
+                                </Grid.ColumnDefinitions>
+
                                 <!-- Name -->
-                                <RowDefinition Height="auto"/>
+                                <Label Grid.Row="0" Grid.Column="0" Content="Name:"></Label>
+                                <TextBlock Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding CurrentPicture.FileName}"/>
+
                                 <!-- Photographer -->
-                                <RowDefinition Height="auto"/>
+                                <Label Grid.Row="1" Grid.Column="0" Content="Photographer:"></Label>
+                                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="CurrentPicture.Photographer.FirstName"/>
+                                            <Binding Path="CurrentPicture.Photographer.LastName"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+
                                 <!-- Camera -->
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <!-- Labels -->
-                                <ColumnDefinition Width="*"/>
-                                <!-- Values -->
-                            </Grid.ColumnDefinitions>
-
-                            <!-- Name -->
-                            <Label Grid.Row="0" Grid.Column="0" Content="Name:"></Label>
-                            <TextBlock Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding CurrentPicture.FileName}"/>
-
-                            <!-- Photographer -->
-                            <Label Grid.Row="1" Grid.Column="0" Content="Photographer:"></Label>
-                            <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0} {1}">
-                                        <Binding Path="CurrentPicture.Photographer.FirstName"/>
-                                        <Binding Path="CurrentPicture.Photographer.LastName"/>
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
-
-                            <!-- Camera -->
-                            <Label Grid.Row="2" Grid.Column="0" Content="Camera:"></Label>
-                            <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding CurrentPicture.Camera.Producer}"/>
+                                <Label Grid.Row="2" Grid.Column="0" Content="Camera:"></Label>
+                                <Grid Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="2" Grid.Column="0"  Text="{Binding CurrentPicture.Camera.Producer}"/>
+                                    <TextBlock Margin="2" Grid.Column="1" Text="{Binding CurrentPicture.Camera.Make}" />
+                                </Grid>
+                            </Grid>
+                        </DockPanel>
+                        <Grid Grid.Row="1">
+                            <!-- Listboxes for choosing Camera and Photographer for each picture -->
+                            <!-- UI Element to set Photographer -->
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0">Select a camera:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="1">Select a photographer:</TextBlock>
+                                <ListBox Name="CameraBox" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Path=CameraList.List}">
+                                    <!-- Listbox for all Cameras -->
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Margin="2" Grid.Column="0" Text="{Binding Producer}" />
+                                                <TextBlock Margin="2" Grid.Column="1" Text="{Binding Make}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <ListBox Name="PhotogrBox" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Path=PhotographerList.List}">
+                                    <!-- Listbox for all photographers -->
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Margin="2" Grid.Column="0" Text="{Binding LastName}" />
+                                                <TextBlock Margin="2" Grid.Column="1" Text="{Binding FirstName}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Grid>
                         </Grid>
-                    </DockPanel>
+                        <Grid Grid.Row="2">
+                            <!-- Button which trigger save function for Camera detail on Photo -->
+                            <Button Name="BtnSaveGeneralInfo" Click="BtnSaveGeneralInfo_Click" HorizontalAlignment="Center" Width="150" Height="25">Save</Button>
+                        </Grid>
+                    </Grid>
+
                 </TabItem>
 
                 <TabItem Header="IPTC">

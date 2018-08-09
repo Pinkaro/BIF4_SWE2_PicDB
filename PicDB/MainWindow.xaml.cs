@@ -52,6 +52,13 @@ namespace PicDB
             _controller.SaveCurrentPicture();
         }
 
+        private void BtnSaveGeneralInfo_Click(object sender, RoutedEventArgs e)
+        {
+            var CameraViewmodel = (CameraViewModel)CameraBox.SelectedItem;
+            var PhotographerViewModel = (PhotographerViewModel)PhotogrBox.SelectedItem;
+            _controller.SaveGeneralInformation(CameraViewmodel, PhotographerViewModel);
+        }
+
         private void PictureSelection_OnSelectionChanged(object sender, RoutedEventArgs e)
         {
             if (PictureSelection.SelectedItem is PictureViewModel)
@@ -69,7 +76,7 @@ namespace PicDB
                 ObservableCollection<IPictureViewModel> filteredList = new ObservableCollection<IPictureViewModel>();
                 foreach (IPictureViewModel viewModel in _controller.List.List)
                 {
-                    if (viewModel.FileName.Contains(Searchbar.Text))
+                    if (viewModel.FileName.ToLower().Contains(Searchbar.Text.ToLower()))
                     {
                         filteredList.Add(viewModel);
                     }

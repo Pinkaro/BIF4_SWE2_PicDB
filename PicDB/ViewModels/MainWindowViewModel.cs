@@ -22,10 +22,13 @@ namespace PicDB.Models
             {
                 if (_currentPicture != value)
                 {
-                    _currentPicture = new PictureViewModel(_businessLayer.GetPicture(value.ID));
-                    ((PictureListViewModel)List).CurrentPicture = _currentPicture;
-                    Title = "PicDB - " + _currentPicture.DisplayName;
-                    NotifyPropertyChanged(nameof(CurrentPicture));
+                    if (value != null)
+                    {
+                        _currentPicture = new PictureViewModel(_businessLayer.GetPicture(value.ID));
+                        ((PictureListViewModel)List).CurrentPicture = _currentPicture;
+                        Title = "PicDB - " + _currentPicture.DisplayName;
+                        NotifyPropertyChanged(nameof(CurrentPicture));
+                    }
                 }
             }
         }
@@ -64,6 +67,13 @@ namespace PicDB.Models
         public void SaveCurrentPicture()
         {
             _businessLayer.Save(new PictureModel(CurrentPicture));
+        }
+
+        internal void SaveGeneralInformation(CameraViewModel cameraViewmodel, PhotographerViewModel photographerViewModel)
+        {
+            ((PictureViewModel)CurrentPicture).Camera = cameraViewmodel;
+            ((PictureViewModel)CurrentPicture).Photographer = photographerViewModel;
+            SaveCurrentPicture();
         }
 
         //public ObservableCollection<> CreatePictureViewModelCollection()
