@@ -39,8 +39,8 @@ namespace PicDB.Models
             FileName = viewModel.FileName;
             IPTC = new IPTCModel(viewModel.IPTC); 
             EXIF = new EXIFModel(viewModel.EXIF);
-            Camera = new CameraModel(viewModel.Camera);
-            Photographer = new PhotographerModel(viewModel.Photographer);
+            if(viewModel.Camera != null) Camera = new CameraModel(viewModel.Camera);
+            if(viewModel.Photographer != null) Photographer = new PhotographerModel(viewModel.Photographer);
         }
 
         public int ID { get; set; }

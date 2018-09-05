@@ -24,13 +24,16 @@ namespace PicDB.Models
 
         public CameraModel(ICameraViewModel viewModel)
         {
-            ID = viewModel.ID;
-            Producer = viewModel.Producer;
-            Make = viewModel.Make;
-            BoughtOn = viewModel.BoughtOn;
-            Notes = viewModel.Notes;
-            ISOLimitGood = viewModel.ISOLimitGood;
-            ISOLimitAcceptable = viewModel.ISOLimitAcceptable;
+            if (viewModel != null)
+            {
+                ID = viewModel.ID;
+                Producer = viewModel.Producer;
+                Make = viewModel.Make;
+                BoughtOn = viewModel.BoughtOn;
+                Notes = viewModel.Notes;
+                ISOLimitGood = viewModel.ISOLimitGood;
+                ISOLimitAcceptable = viewModel.ISOLimitAcceptable;
+            }
         }
 
         public int ID { get; set; }

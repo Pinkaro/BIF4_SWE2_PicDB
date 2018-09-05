@@ -7,10 +7,13 @@ using BIF.SWE2.Interfaces;
 using BIF.SWE2.Interfaces.Models;
 using PicDB.Models;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace PicDB.Layers
 {
     class DataAccessLayer : IDataAccessLayer
     {
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private string ConnectionString { get; set; }
 
         public DataAccessLayer()

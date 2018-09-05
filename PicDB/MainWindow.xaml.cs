@@ -20,6 +20,8 @@ using PicDB.Models;
 using PicDB.utils;
 using PicDB.ViewModels;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace PicDB
 {
     /// <summary>
