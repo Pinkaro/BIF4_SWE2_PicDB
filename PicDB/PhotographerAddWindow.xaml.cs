@@ -27,5 +27,19 @@ namespace PicDB
             InitializeComponent();
             this.DataContext = _controller;
         }
+
+        private void SaveBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+            var photographer = new PhotographerModel();
+            var birthday = DateTime.Now;
+
+            if (DateTime.TryParse(Birthday.Text, out birthday)) photographer.BirthDay = birthday;
+            if (!string.IsNullOrWhiteSpace(FirstName.Text)) photographer.FirstName = FirstName.Text;
+            if (!string.IsNullOrWhiteSpace(LastName.Text)) photographer.LastName = LastName.Text;
+            if (!string.IsNullOrWhiteSpace(Notes.Text)) photographer.Notes = Notes.Text;
+
+            _controller.SavePhotographer(photographer);
+            this.Close();
+        }
     }
 }

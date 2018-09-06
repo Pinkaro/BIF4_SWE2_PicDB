@@ -77,12 +77,12 @@ namespace PicDB
                     LastName.Text = string.Empty;
                     Birthday.Text = string.Empty;
                     Notes.Text = string.Empty;
-                }
-                catch
-                {
-                    MessageBox.Show("Can't delete this photographer because it its assigned to a picture.", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
             }
+                catch
+            {
+                MessageBox.Show("Can't delete this photographer because it its assigned to a picture.", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
         }
     }
 }

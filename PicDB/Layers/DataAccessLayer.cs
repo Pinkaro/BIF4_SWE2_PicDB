@@ -250,21 +250,38 @@ namespace PicDB.Layers
 
         public void DeletePicture(int ID)
         {
+            var itcpFk = 0;
             using (var connection = new SqlConnection(ConnectionString))
             using (var command = connection.CreateCommand())
             {
                 connection.Open();
 
-                command.CommandText = "DELETE FROM PictureModel " +
+                //select picture for itcp fk
+                command.CommandText = "Select fk_IPTC FROM PictureModel " +
                                       "WHERE ID = @id;";
-
-
                 var idParam = new SqlParameter("@id", SqlDbType.Int) { Value = ID };
-
                 command.Parameters.Add(idParam);
-
                 command.Prepare();
+                using (var reader = command.ExecuteReader())
+                {
+                    reader.Read();
+                    itcpFk = int.Parse(reader["fk_IPTC"].ToString());
+                }
 
+                //delete picture
+                command.CommandText = "DELETE FROM PictureModel " +
+                                      "WHERE ID = @id2;";
+                idParam = new SqlParameter("@id2", SqlDbType.Int) { Value = ID };
+                command.Parameters.Add(idParam);
+                command.Prepare();
+                command.ExecuteScalar();
+
+                //delete itcp
+                command.CommandText = "DELETE FROM IPTCModel " +
+                                      "WHERE ID = @id3;";
+                idParam = new SqlParameter("@id3", SqlDbType.Int) { Value = itcpFk };
+                command.Parameters.Add(idParam);
+                command.Prepare();
                 command.ExecuteScalar();
                 connection.Close();
             }
@@ -386,36 +403,17 @@ namespace PicDB.Layers
             using (var connection = new SqlConnection(ConnectionString))
             using (var command = connection.CreateCommand())
             {
-                var itcpFk = 0;
-
                 connection.Open();
+                command.CommandText = "DELETE FROM PhotographerModel " +
+                                      "WHERE ID = @id";
 
-                //select picture for itcp fk
-                command.CommandText = "Select fk_IPTC FROM PictureModel " +
-                                      "WHERE ID = @id;";
+
                 var idParam = new SqlParameter("@id", SqlDbType.Int) { Value = ID };
-                command.Parameters.Add(idParam);
-                command.Prepare();
-                using (var reader = command.ExecuteReader())
-                {
-                    reader.Read();
-                    itcpFk = int.Parse(reader["fk_IPTC"].ToString());
-                }
 
-                //delete picture
-                command.CommandText = "DELETE FROM PictureModel " +
-                                      "WHERE ID = @id2;";
-                idParam = new SqlParameter("@id2", SqlDbType.Int) { Value = ID };
                 command.Parameters.Add(idParam);
-                command.Prepare();
-                command.ExecuteScalar();
 
-                //delete itcp
-                command.CommandText = "DELETE FROM IPTCModel " +
-                                      "WHERE ID = @id3;";
-                idParam = new SqlParameter("@id3", SqlDbType.Int) { Value = itcpFk };
-                command.Parameters.Add(idParam);
                 command.Prepare();
+
                 command.ExecuteScalar();
                 connection.Close();
             }
@@ -612,6 +610,43 @@ namespace PicDB.Layers
                 command.Parameters.Add(notesParam);
                 command.Parameters.Add(isoAccLimit);
                 command.Parameters.Add(isoGood);
+
+                // Call Prepare after setting the Commandtext and Parameters.
+                command.Prepare();
+
+                // Change parameter values and call ExecuteNonQuery.
+                command.ExecuteScalar();
+                connection.Close();
+            }
+        }
+
+        public void SavePhotographer(PhotographerModel photographer)
+        {
+            //TODO: Save Photographer to database
+            var query = "INSERT INTO dbo.PhotographerModel(FirstName, LastName, Birthday, Notes)"
+                        + "VALUES(@firstname, @lastname, @birthday, @notes);";
+
+            // Create and prepare an SQL statement.
+            var producerParam =
+                new SqlParameter("@firstname", SqlDbType.Text, 255) { Value = photographer.FirstName };
+            var makeParam =
+                new SqlParameter("@lastname", SqlDbType.Text, 255) { Value = photographer.LastName };
+            var boughtOnParam =
+                new SqlParameter("@birthday", SqlDbType.DateTime) { Value = photographer.BirthDay };
+            var notesParam = new SqlParameter("@notes", SqlDbType.Text, 255) { Value = photographer.Notes };
+
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(null, connection)
+                {
+                    CommandText = query
+                };
+
+                command.Parameters.Add(producerParam);
+                command.Parameters.Add(makeParam);
+                command.Parameters.Add(boughtOnParam);
+                command.Parameters.Add(notesParam);
 
                 // Call Prepare after setting the Commandtext and Parameters.
                 command.Prepare();

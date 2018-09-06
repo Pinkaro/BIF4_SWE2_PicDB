@@ -111,9 +111,11 @@ namespace PicDB.Models
             ((PhotographerListViewModel)PhotographerList).SynchronizePhotographers();
         }
 
-        public void SavePhotographer(PhotographerViewModel photographerViewModel)
+        internal void SavePhotographer(PhotographerModel photographer)
         {
-
+            _businessLayer.SavePhotographer(photographer);
+            var photographerlist = (PhotographerListViewModel)PhotographerList;
+            photographerlist.SynchronizePhotographers();
         }
     }
 }
