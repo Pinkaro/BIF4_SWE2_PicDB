@@ -9,7 +9,7 @@ using PicDB.utils;
 
 namespace PicDB.Models
 {
-    class PictureViewModel : ViewModelNotifier, IPictureViewModel
+    public class PictureViewModel : ViewModelNotifier, IPictureViewModel
     {
         public PictureViewModel() { }
 

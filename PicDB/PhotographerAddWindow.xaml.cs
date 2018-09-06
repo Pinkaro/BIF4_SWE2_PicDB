@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PicDB.Models;
 
 namespace PicDB
 {
@@ -19,9 +20,12 @@ namespace PicDB
     /// </summary>
     public partial class PhotographerAddWindow : Window
     {
-        public PhotographerAddWindow()
+        private MainWindowViewModel _controller;
+        public PhotographerAddWindow(MainWindowViewModel controller)
         {
+            _controller = controller;
             InitializeComponent();
+            this.DataContext = _controller;
         }
     }
 }

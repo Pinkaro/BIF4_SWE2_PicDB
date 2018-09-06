@@ -42,7 +42,20 @@ namespace PicDB
             {
                 var cameraViewModel = lastSelectedViewModel;
                 int ID = cameraViewModel.ID;
-                _controller.DeleteCamera(ID);
+                try
+                {
+                    _controller.DeleteCamera(ID);
+                    Producer.Text = string.Empty;
+                    Make.Text = string.Empty;
+                    BoughtOn.Text = string.Empty;
+                    Notes.Text = string.Empty;
+                    ISOLimitGood.Text = string.Empty;
+                    ISOLimitAcceptable.Text = string.Empty;
+                }
+                catch
+                {
+                    MessageBox.Show("Can't delete this camera because it its assigned to a picture.", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 

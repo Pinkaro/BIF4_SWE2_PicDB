@@ -92,6 +92,28 @@ namespace PicDB.Models
             ((CameraListViewModel)CameraList).SynchronizeCameras();
         }
 
-        //public ObservableCollection<> CreatePictureViewModelCollection()
+        public void SaveCamera(CameraModel camera)
+        {
+            _businessLayer.SaveCamera(camera);
+            var cameraList = (CameraListViewModel)CameraList;
+            cameraList.SynchronizeCameras();
+        }
+
+        public void UpdatePhotographer(PhotographerViewModel photographerViewModel)
+        {
+            _businessLayer.UpdatePhotographer(new PhotographerModel(photographerViewModel));
+            ((PhotographerListViewModel)PhotographerList).SynchronizePhotographers();
+        }
+
+        public void DeletePhotographer(int id)
+        {
+            _businessLayer.DeletePhotographer(id);
+            ((PhotographerListViewModel)PhotographerList).SynchronizePhotographers();
+        }
+
+        public void SavePhotographer(PhotographerViewModel photographerViewModel)
+        {
+
+        }
     }
 }

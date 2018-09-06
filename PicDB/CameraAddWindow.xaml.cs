@@ -30,7 +30,26 @@ namespace PicDB
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var camera = new CameraModel();
+            var boughtOn = DateTime.Now;
+            decimal isoLimits;
 
+            if (DateTime.TryParse(BoughtOn.Text, out boughtOn)) camera.BoughtOn = boughtOn;
+            if (!string.IsNullOrWhiteSpace(Producer.Text)) camera.Producer = Producer.Text;
+            if (!string.IsNullOrWhiteSpace(Make.Text)) camera.Make = Make.Text;
+            if (!string.IsNullOrWhiteSpace(Notes.Text)) camera.Notes = Notes.Text;
+
+            if (!string.IsNullOrWhiteSpace(ISOLimitAcceptable.Text))
+                if (decimal.TryParse(ISOLimitAcceptable.Text, out isoLimits))
+                    camera.ISOLimitAcceptable = isoLimits;
+
+            if (!string.IsNullOrWhiteSpace(ISOLimitGood.Text))
+                if (decimal.TryParse(ISOLimitGood.Text, out isoLimits))
+                    camera.ISOLimitGood = isoLimits;
+
+
+            _controller.SaveCamera(camera);
+            this.Close();
         }
     }
 }

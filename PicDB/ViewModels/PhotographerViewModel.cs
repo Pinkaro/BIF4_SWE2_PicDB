@@ -8,7 +8,7 @@ using PicDB.ViewModels;
 
 namespace PicDB.Models
 {
-    class PhotographerViewModel : IPhotographerViewModel
+    public class PhotographerViewModel : IPhotographerViewModel
     {
         public PhotographerViewModel(IPhotographerModel mdl)
         {

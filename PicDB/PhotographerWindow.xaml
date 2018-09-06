@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PicDB"
         mc:Ignorable="d"
-        Title="PhotographerWindow" Height="450" Width="800">
+        Title="PhotographerWindow" Height="300" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -19,7 +19,7 @@
                 <RowDefinition Height="40" />
                 <!-- Add Button -->
             </Grid.RowDefinitions>
-
+            
             <ListBox Name="PhotographerBox" Grid.Row="0" ItemsSource="{Binding Path=PhotographerList.List}" SelectionChanged="PhotographerBox_OnSelectionChanged">
                 <!-- Listbox for all Photographers -->
                 <ListBox.ItemTemplate>
@@ -29,8 +29,8 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Margin="2" Grid.Column="0" Grid.Row="0" Text="{Binding Producer}" />
-                            <TextBlock Margin="2" Grid.Column="1" Grid.Row="0" Text="{Binding Make}" />
+                            <TextBlock Margin="2" Grid.Column="0" Grid.Row="0" Text="{Binding LastName}" />
+                            <TextBlock Margin="2" Grid.Column="1" Grid.Row="0" Text="{Binding FirstName}" />
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -59,18 +59,15 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">Producer</Label>
-                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">Make</Label>
-                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">BoughtOn</Label>
+                <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">First Name</Label>
+                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">Last Name</Label>
+                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">Birthday</Label>
                 <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">Notes</Label>
-                <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">ISOLimitGood</Label>
-                <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Margin="15 0 0 0" VerticalAlignment="Center">ISOLimitAcceptable</Label>
-                <TextBox Name="Producer"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
-                <TextBox Name="Make" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
-                <TextBox Name="BoughtOn" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
+
+                <TextBox Name="FirstName"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
+                <TextBox Name="LastName" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
+                <TextBox Name="Birthday" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
                 <TextBox Name="Notes" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
-                <TextBox Name="ISOLimitGood" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
-                <TextBox Name="ISOLimitAcceptable" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
             </Grid>
 
             <!-- Buttons -->

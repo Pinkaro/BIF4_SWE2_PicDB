@@ -20,29 +20,69 @@ namespace PicDB
     /// </summary>
     public partial class PhotographerWindow : Window
     {
+        private PhotographerViewModel lastSelectedViewModel;
+        private MainWindowViewModel _controller;
         public PhotographerWindow(MainWindowViewModel controller)
         {
+            _controller = controller;
             InitializeComponent();
+            this.DataContext = _controller;
         }
 
         private void PhotographerBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (PhotographerBox.SelectedItem != null)
+            {
+                var PhotographerModel = (PhotographerViewModel) PhotographerBox.SelectedItem;
+                lastSelectedViewModel = PhotographerModel;
+
+                FirstName.Text = PhotographerModel.FirstName;
+                LastName.Text = PhotographerModel.LastName;
+                Birthday.Text = PhotographerModel.BirthDay.ToString();
+                Notes.Text = PhotographerModel.Notes;
+            }
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var PhotographerAddWindow = new PhotographerAddWindow(_controller);
+            PhotographerAddWindow.Show();
         }
 
         private void BtnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (lastSelectedViewModel != null)
+            {
+                PhotographerViewModel photographerViewModel = lastSelectedViewModel;
+
+                photographerViewModel.FirstName = FirstName.Text;
+                photographerViewModel.LastName = LastName.Text;
+                photographerViewModel.BirthDay = DateTime.Parse(Birthday.Text);
+                photographerViewModel.Notes = Notes.Text;
+
+                _controller.UpdatePhotographer(photographerViewModel);
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (lastSelectedViewModel != null)
+            {
+                var photographerViewModel = lastSelectedViewModel;
+                int ID = photographerViewModel.ID;
+                try
+                {
+                    _controller.DeletePhotographer(ID);
+                    FirstName.Text = string.Empty;
+                    LastName.Text = string.Empty;
+                    Birthday.Text = string.Empty;
+                    Notes.Text = string.Empty;
+                }
+                catch
+                {
+                    MessageBox.Show("Can't delete this photographer because it its assigned to a picture.", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
     }
 }
