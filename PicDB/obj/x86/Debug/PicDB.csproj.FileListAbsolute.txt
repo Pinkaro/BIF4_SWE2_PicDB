@@ -13,3 +13,10 @@ C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.pdb
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.csprojAssemblyReference.cache
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB.csproj.CopyComplete
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy\PicDB.exe.config
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\CameraAddWindow.g.cs
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\CameraWindow.g.cs
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PhotographerWindow.g.cs
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PicDB_MarkupCompile.lref
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\CameraAddWindow.baml
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\CameraWindow.baml
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PhotographerWindow.baml

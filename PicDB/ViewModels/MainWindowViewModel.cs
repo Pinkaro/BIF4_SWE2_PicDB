@@ -10,7 +10,7 @@ using BIF.SWE2.Interfaces.Models;
 
 namespace PicDB.Models
 {
-    class MainWindowViewModel : ViewModelNotifier, IMainWindowViewModel
+    public class MainWindowViewModel : ViewModelNotifier, IMainWindowViewModel
     {
         private readonly BusinessLayer _businessLayer = new BusinessLayer();
 
@@ -78,6 +78,18 @@ namespace PicDB.Models
             ((PictureViewModel)CurrentPicture).Camera = cameraViewmodel;
             ((PictureViewModel)CurrentPicture).Photographer = photographerViewModel;
             SaveCurrentPicture();
+        }
+
+        internal void UpdateCamera(ICameraViewModel cameraViewModel)
+        {
+            _businessLayer.UpdateCamera(new CameraModel(cameraViewModel));
+            ((CameraListViewModel)CameraList).SynchronizeCameras();
+        }
+
+        internal void DeleteCamera(int ID)
+        {
+            _businessLayer.DeleteCamera(ID);
+            ((CameraListViewModel)CameraList).SynchronizeCameras();
         }
 
         //public ObservableCollection<> CreatePictureViewModelCollection()

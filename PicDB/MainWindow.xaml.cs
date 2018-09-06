@@ -20,8 +20,6 @@ using PicDB.Models;
 using PicDB.utils;
 using PicDB.ViewModels;
 
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
-
 namespace PicDB
 {
     /// <summary>
@@ -134,6 +132,20 @@ namespace PicDB
                 GlobalInformation.ReadConfigFile();
                 ((PictureListViewModel)_controller.List).SyncAndUpdatePictureList();
             }
+        }
+
+        private void MenuEditCameras_Click(object sender, RoutedEventArgs e)
+        {
+            var cameraWindow = new CameraWindow(_controller);
+
+            cameraWindow.Show();
+        }
+
+        private void MenuEditPhotographers_Click(object sender, RoutedEventArgs e)
+        {
+            var photographerWindow = new PhotographerWindow(_controller);
+
+            photographerWindow.Show();
         }
 
         /// <summary>

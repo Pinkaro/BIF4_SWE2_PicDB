@@ -152,5 +152,15 @@ namespace PicDB.Layers
         {
             
         }
+
+        public void UpdateCamera(ICameraModel cameraModel)
+        {
+            ((DataAccessLayer) DataAccessLayer).UpdateCamera(cameraModel);
+        }
+
+        public void DeleteCamera(int ID)
+        {
+            ((DataAccessLayer) DataAccessLayer).DeleteCamera(ID);
+        }
     }
 }

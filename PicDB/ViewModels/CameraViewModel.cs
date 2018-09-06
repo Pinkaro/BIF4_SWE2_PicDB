@@ -18,6 +18,7 @@ namespace PicDB.ViewModels
             if (model == null) return;
             ID = model.ID;
             Producer = model.Producer;
+            BoughtOn = model.BoughtOn;
             Make = model.Make;
             ISOLimitGood = model.ISOLimitGood;
             ISOLimitAcceptable = model.ISOLimitAcceptable;

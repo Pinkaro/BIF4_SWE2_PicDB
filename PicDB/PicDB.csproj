@@ -80,6 +80,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CameraAddWindow.xaml.cs">
+      <DependentUpon>CameraAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CameraWindow.xaml.cs">
+      <DependentUpon>CameraWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GlobalInformation.cs" />
     <Compile Include="Layers\BusinessLayer.cs" />
     <Compile Include="Layers\DataAccessLayer.cs" />
@@ -90,6 +96,9 @@
     <Compile Include="Models\IPTCModel.cs" />
     <Compile Include="Models\PhotographerModel.cs" />
     <Compile Include="Models\PictureModel.cs" />
+    <Compile Include="PhotographerWindow.xaml.cs">
+      <DependentUpon>PhotographerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="utils\Exceptions\PictureNotFoundException.cs" />
     <Compile Include="utils\LogHelper.cs" />
     <Compile Include="ViewModels\CameraListViewModel.cs" />
@@ -109,6 +118,14 @@
     <Compile Include="Uebungen\UEB2.cs" />
     <Compile Include="Uebungen\UEB1.cs" />
     <Compile Include="ViewModels\ViewModelNotifier.cs" />
+    <Page Include="CameraAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CameraWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +138,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PhotographerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

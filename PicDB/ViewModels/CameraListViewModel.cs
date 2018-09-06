@@ -4,25 +4,41 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 
 namespace PicDB.ViewModels
 {
     class CameraListViewModel : ViewModelNotifier, ICameraListViewModel
     {
-        public IEnumerable<ICameraViewModel> List { get; }
+        private IEnumerable<ICameraViewModel> _list;
+        public IEnumerable<ICameraViewModel> List
+        {
+            get => _list;
+            private set
+            {
+                _list = value;
+                NotifyPropertyChanged("List");
+            }
+        }
 
+        private ICameraViewModel _currentCamera;
         public ICameraViewModel CurrentCamera
         {
-            get => CurrentCamera;
+            get => _currentCamera;
             set
             {
-                CurrentCamera = value;
+                _currentCamera = value;
                 NotifyPropertyChanged("CurrentCamera");
             }
         }
 
         public CameraListViewModel()
+        {
+            SynchronizeCameras();
+        }
+
+        public void SynchronizeCameras()
         {
             var bl = new BusinessLayer();
             var cameraModels = bl.GetCameras();
