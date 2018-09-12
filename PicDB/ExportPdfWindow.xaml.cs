@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,8 +32,16 @@ namespace PicDB
 
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
-            var PdfReport = new PdfReport();
-            PdfReport.CreateReport(_controller.List, Tags.Text);
+            try
+            {
+                var PdfReport = new PdfReport();
+                PdfReport.CreateReport(_controller.List, Tags.Text);
+                this.Close();
+            }
+            catch (FileNotFoundException exception)
+            {
+                // LOG EXCEPTION HERE
+            }
 
             //MessageBox.Show("Can't delete this photographer because it its assigned to a picture.", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
         }

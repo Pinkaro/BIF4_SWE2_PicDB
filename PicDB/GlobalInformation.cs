@@ -11,6 +11,8 @@ namespace PicDB
 
         public static string Path;
 
+        public static string ReportPath;
+
         public static void ReadConfigFile()
         {
             var dict = new Dictionary<string, string>();
@@ -24,6 +26,7 @@ namespace PicDB
 
             ConnectionString = dict["connectionString"];
             Path = dict["path"];
+            ReportPath = dict["reportPath"];
         }
     }
 }
