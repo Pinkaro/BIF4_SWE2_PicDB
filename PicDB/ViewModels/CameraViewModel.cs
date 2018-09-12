@@ -9,7 +9,7 @@ using BIF.SWE2.Interfaces.Models;
 
 namespace PicDB.ViewModels
 {
-    class CameraViewModel : ICameraViewModel
+    public class CameraViewModel : ICameraViewModel
     {
         public CameraViewModel() { }
 

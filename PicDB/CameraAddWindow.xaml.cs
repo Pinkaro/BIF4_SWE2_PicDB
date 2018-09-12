@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PicDB.Models;
+using PicDB.ViewModels;
 
 namespace PicDB
 {
@@ -30,7 +31,7 @@ namespace PicDB
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var camera = new CameraModel();
+            var camera = new CameraViewModel();
             var boughtOn = DateTime.Now;
             decimal isoLimits;
 

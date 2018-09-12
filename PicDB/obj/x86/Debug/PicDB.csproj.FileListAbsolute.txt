@@ -22,3 +22,5 @@ C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\CameraWindo
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PhotographerWindow.baml
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PhotographerAddWindow.g.cs
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\PhotographerAddWindow.baml
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\ExportPdfWindow.g.cs
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\obj\x86\Debug\ExportPdfWindow.baml

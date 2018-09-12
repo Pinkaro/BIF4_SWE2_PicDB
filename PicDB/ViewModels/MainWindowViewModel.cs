@@ -92,9 +92,9 @@ namespace PicDB.Models
             ((CameraListViewModel)CameraList).SynchronizeCameras();
         }
 
-        public void SaveCamera(CameraModel camera)
+        public void SaveCamera(CameraViewModel camera)
         {
-            _businessLayer.SaveCamera(camera);
+            _businessLayer.SaveCamera(new CameraModel(camera));
             var cameraList = (CameraListViewModel)CameraList;
             cameraList.SynchronizeCameras();
         }
@@ -111,9 +111,9 @@ namespace PicDB.Models
             ((PhotographerListViewModel)PhotographerList).SynchronizePhotographers();
         }
 
-        internal void SavePhotographer(PhotographerModel photographer)
+        internal void SavePhotographer(PhotographerViewModel photographer)
         {
-            _businessLayer.SavePhotographer(photographer);
+            _businessLayer.SavePhotographer(new PhotographerModel(photographer));
             var photographerlist = (PhotographerListViewModel)PhotographerList;
             photographerlist.SynchronizePhotographers();
         }

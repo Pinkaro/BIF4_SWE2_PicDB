@@ -41,6 +41,7 @@ namespace PicDB
                 Birthday.Text = PhotographerModel.BirthDay.ToString();
                 Notes.Text = PhotographerModel.Notes;
             }
+            ErrorLabel.Content = "";
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -53,14 +54,30 @@ namespace PicDB
         {
             if (lastSelectedViewModel != null)
             {
-                PhotographerViewModel photographerViewModel = lastSelectedViewModel;
+                if (DateTime.TryParse(Birthday.Text, out DateTime birthday))
+                {
+                    if (birthday < DateTime.Now && !string.IsNullOrWhiteSpace(FirstName.Text) &&
+                        !string.IsNullOrWhiteSpace(LastName.Text) && !string.IsNullOrWhiteSpace(Notes.Text))
+                    {
 
-                photographerViewModel.FirstName = FirstName.Text;
-                photographerViewModel.LastName = LastName.Text;
-                photographerViewModel.BirthDay = DateTime.Parse(Birthday.Text);
-                photographerViewModel.Notes = Notes.Text;
+                        PhotographerViewModel photographerViewModel = lastSelectedViewModel;
 
-                _controller.UpdatePhotographer(photographerViewModel);
+                        photographerViewModel.FirstName = FirstName.Text;
+                        photographerViewModel.LastName = LastName.Text;
+                        photographerViewModel.BirthDay = DateTime.Parse(Birthday.Text);
+                        photographerViewModel.Notes = Notes.Text;
+
+                        _controller.UpdatePhotographer(photographerViewModel);
+                    }
+                    else
+                    {
+                        ErrorLabel.Content = "INVALID INPUT";
+                    }
+                }
+                else
+                {
+                    ErrorLabel.Content = "INVALID INPUT";
+                }
             }
         }
 

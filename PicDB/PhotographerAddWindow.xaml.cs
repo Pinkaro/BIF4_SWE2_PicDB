@@ -30,16 +30,30 @@ namespace PicDB
 
         private void SaveBtn_Clicked(object sender, RoutedEventArgs e)
         {
-            var photographer = new PhotographerModel();
+            var photographer = new PhotographerViewModel();
             var birthday = DateTime.Now;
 
-            if (DateTime.TryParse(Birthday.Text, out birthday)) photographer.BirthDay = birthday;
-            if (!string.IsNullOrWhiteSpace(FirstName.Text)) photographer.FirstName = FirstName.Text;
-            if (!string.IsNullOrWhiteSpace(LastName.Text)) photographer.LastName = LastName.Text;
-            if (!string.IsNullOrWhiteSpace(Notes.Text)) photographer.Notes = Notes.Text;
+            if (DateTime.TryParse(Birthday.Text, out birthday))
+            {
+                if (birthday < DateTime.Now && !string.IsNullOrWhiteSpace(FirstName.Text) && !string.IsNullOrWhiteSpace(LastName.Text) && !string.IsNullOrWhiteSpace(Notes.Text))
+                {
+                    photographer.BirthDay = birthday;
+                    photographer.FirstName = FirstName.Text;
+                    photographer.LastName = LastName.Text;
+                    photographer.Notes = Notes.Text;
 
-            _controller.SavePhotographer(photographer);
-            this.Close();
+                    _controller.SavePhotographer(photographer);
+                    this.Close();
+                }
+                else
+                {
+                    ErrorLabel.Content = "INVALID INPUT";
+                }
+            }
+            else
+            {
+                ErrorLabel.Content = "INVALID INPUT";
+            }
         }
     }
 }

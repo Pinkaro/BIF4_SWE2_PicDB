@@ -42,6 +42,7 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="33"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
             </Grid.RowDefinitions>
 
@@ -70,8 +71,12 @@
                 <TextBox Name="Notes" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"></TextBox>
             </Grid>
 
-            <!-- Buttons -->
+            <!-- Error Message -->
             <Grid Grid.Row="1">
+                <Label Name="ErrorLabel" HorizontalAlignment="Center" Foreground="#FFFF0606"></Label>
+            </Grid>
+            <!-- Buttons -->
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>

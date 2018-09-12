@@ -171,7 +171,7 @@ namespace PicDB.Layers
 
         public void UpdatePhotographer(PhotographerModel photographerModel)
         {
-            ((DataAccessLayer) DataAccessLayer).Save(photographerModel);
+            ((DataAccessLayer) DataAccessLayer).UpdatePhotographer(photographerModel);
         }
 
         public void SavePhotographer(PhotographerModel photographerModel)

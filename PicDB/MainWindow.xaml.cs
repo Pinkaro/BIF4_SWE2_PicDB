@@ -148,6 +148,13 @@ namespace PicDB
             photographerWindow.Show();
         }
 
+        private void MenuExportPdf_Click(object sender, RoutedEventArgs e)
+        {
+            var exportPdf = new ExportPdfWindow(_controller);
+
+            exportPdf.Show();
+        }
+
         /// <summary>
         /// TO MAYBO DO
         /// </summary>
@@ -159,5 +166,7 @@ namespace PicDB
             string Headline = UI_IPTC_Headline.Text;
             string Caption = UI_IPTC_Caption.Text;
         }
+
+        
     }
 }

@@ -86,6 +86,9 @@
     <Compile Include="CameraWindow.xaml.cs">
       <DependentUpon>CameraWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExportPdfWindow.xaml.cs">
+      <DependentUpon>ExportPdfWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GlobalInformation.cs" />
     <Compile Include="Layers\BusinessLayer.cs" />
     <Compile Include="Layers\DataAccessLayer.cs" />
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CameraWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExportPdfWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

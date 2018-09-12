@@ -656,5 +656,34 @@ namespace PicDB.Layers
                 connection.Close();
             }
         }
+
+        public void UpdatePhotographer(PhotographerModel photographer)
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                var cmd = new SqlCommand("UPDATE dbo.PhotographerModel " +
+                                         "SET FirstName = @firstname, LastName = @lastname, Birthday = @birthday, Notes = @notes " +
+                                         "WHERE ID = @id;", connection);
+
+                var idParam = new SqlParameter("@id", SqlDbType.Int) { Value = photographer.ID };
+                var firstnameParam = new SqlParameter("@firstname", SqlDbType.Text, 255) { Value = photographer.FirstName };
+                var lastnameParam = new SqlParameter("@lastname", SqlDbType.Text, 255) { Value = photographer.LastName };
+                var birthdayParam = new SqlParameter("@birthday", SqlDbType.Date) { Value = photographer.BirthDay };
+                var notesParam = new SqlParameter("@notes", SqlDbType.Text, 255) { Value = photographer.Notes };
+
+                cmd.Parameters.Add(idParam);
+                cmd.Parameters.Add(firstnameParam);
+                cmd.Parameters.Add(lastnameParam);
+                cmd.Parameters.Add(birthdayParam);
+                cmd.Parameters.Add(notesParam);
+
+                cmd.Prepare();
+                cmd.ExecuteScalar();
+
+                connection.Close();
+            }
+        }
     }
 }

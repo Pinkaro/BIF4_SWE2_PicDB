@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\App.xaml
-5-1845502770
+6-1952935689
 
-42-383537201
+44513552328
 15-794005659
-CameraAddWindow.xaml;CameraWindow.xaml;MainWindow.xaml;PhotographerAddWindow.xaml;PhotographerWindow.xaml;
+CameraAddWindow.xaml;CameraWindow.xaml;ExportPdfWindow.xaml;MainWindow.xaml;PhotographerAddWindow.xaml;PhotographerWindow.xaml;
 
-False
+True
 
