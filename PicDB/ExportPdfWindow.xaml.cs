@@ -35,7 +35,7 @@ namespace PicDB
             try
             {
                 var PdfReport = new PdfReport();
-                PdfReport.CreateReport(_controller.List, Tags.Text);
+                PdfReport.CreateReport(Tags.Text);
                 this.Close();
             }
             catch (FileNotFoundException exception)

@@ -1,0 +1,3 @@
+path,C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy\Pictures\
+connectionString,Data Source=DESKTOP-RK06UV5\SQLEXPRESS;Initial Catalog=PicDB;Integrated Security=True
+reportPath,C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy\Reports

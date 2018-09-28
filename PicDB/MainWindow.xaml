@@ -6,7 +6,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <!-- Menu -->
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <!-- SearchBar -->
             <RowDefinition Height="2*"/>
             <!-- PictureView / Info -->
@@ -40,7 +40,20 @@
         </Menu>
 
         <!-- SearchBar -->
-        <TextBox Grid.Row="1" Name="Searchbar" GotFocus="Searchbar_GotFocus" LostFocus="Searchbar_LostFocus" SelectionChanged="Searchbar_SelectionChanged"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" VerticalContentAlignment="Center" Name="Searchbar" GotFocus="Searchbar_GotFocus" LostFocus="Searchbar_LostFocus" SelectionChanged="Searchbar_SelectionChanged"/>
+            <Button Name="ExportPdfSingle" Grid.Column="1" Height="30" Width="30" Click="ExportPdfSingle_Click">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Image Source="C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy\ico\pdf.png" Width="30" Height="30"/>
+                    <TextBlock Text="Blablabla" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </Grid>
+        
 
         <!-- PictureView / Info  -->
         <Grid Grid.Row="2">
@@ -232,6 +245,8 @@
                                 <RowDefinition Height="auto"/>
                                 <!-- ISOValue -->
                                 <RowDefinition Height="auto"/>
+                                <!-- ISORating -->
+                                <RowDefinition Height="auto"/>
                                 <!-- Flash -->
                                 <RowDefinition Height="auto"/>
                                 <!-- ExposureProgram -->
@@ -260,18 +275,22 @@
                             <!-- ISOValue -->
                             <Label Grid.Row="3" Grid.Column="0" Content="ISO Value:"></Label>
                             <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Text="{Binding CurrentPicture.EXIF.ISOValue}"/>
+                            
+                            <!-- ISORating -->
+                            <Label Grid.Row="4" Grid.Column="0" Content="ISO Rating:"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Text="{Binding CurrentPicture.EXIF.ISORating}"/>
 
                             <!-- Flash -->
-                            <Label Grid.Row="4" Grid.Column="0" Content="Flash:"></Label>
-                            <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Text="{Binding CurrentPicture.EXIF.Flash}"/>
+                            <Label Grid.Row="5" Grid.Column="0" Content="Flash:"></Label>
+                            <TextBlock Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Text="{Binding CurrentPicture.EXIF.Flash}"/>
 
                             <!-- ExposureProgram -->
-                            <Label Grid.Row="5" Grid.Column="0" Content="Exposure Program:"></Label>
-                            <TextBlock Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Text="{Binding CurrentPicture.EXIF.ExposureProgram}"/>
+                            <Label Grid.Row="6" Grid.Column="0" Content="Exposure Program:"></Label>
+                            <TextBlock Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Text="{Binding CurrentPicture.EXIF.ExposureProgram}"/>
 
                             <!-- ExposureProgramResource -->
-                            <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" TextWrapping="Wrap" Text="Exposure Program Resource:"></TextBlock>
-                            <TextBlock Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding CurrentPicture.EXIF.ExposureProgramResource}"/>
+                            <TextBlock Grid.Row="7" Grid.Column="0" Margin="5" TextWrapping="Wrap" Text="Exposure Program Resource:"></TextBlock>
+                            <TextBlock Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding CurrentPicture.EXIF.ExposureProgramResource}"/>
                         </Grid>
                     </DockPanel>
                 </TabItem>

@@ -685,5 +685,50 @@ namespace PicDB.Layers
                 connection.Close();
             }
         }
+
+        public Dictionary<string, int> GetTagCount()
+        {
+            List<string> tagList = new List<string>();
+            var queryString = "select Keywords from PictureModel left join IPTCModel on PictureModel.fk_IPTC = IPTCModel.ID; ";
+
+            using (var connection = new SqlConnection(ConnectionString))
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = queryString;
+
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        string tags = reader["Keywords"].ToString();
+
+                        tagList.Add(tags);
+                    }
+                }
+            }
+
+            Dictionary<string, int> sortedTagList = new Dictionary<string, int>();
+
+            foreach (string tags in tagList)
+            {
+                string[] tagArray = tags.Split(';');
+
+                foreach (string tag in tagArray)
+                {
+                    if (!sortedTagList.ContainsKey(tag))
+                    {
+                        sortedTagList.Add(tag, 1);
+                    }
+                    else
+                    {
+                        sortedTagList[tag]++;
+                    }
+                }
+            }
+            return sortedTagList;
+        }
     }
 }

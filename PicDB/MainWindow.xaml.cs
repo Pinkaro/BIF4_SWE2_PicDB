@@ -38,6 +38,7 @@ namespace PicDB
             this.DataContext = _controller;
             Searchbar.Foreground = Brushes.DimGray;
             Searchbar.Text = "Search picture";
+            Searchbar.FontSize = 14;
         }
 
         private void BtnSaveIPTC_Click(object sender, RoutedEventArgs e)
@@ -167,6 +168,11 @@ namespace PicDB
             string Caption = UI_IPTC_Caption.Text;
         }
 
-        
+
+        private void ExportPdfSingle_Click(object sender, RoutedEventArgs e)
+        {
+            var PdfReport = new PdfReport();
+            PdfReport.CreateReport(_controller.CurrentPicture);
+        }
     }
 }

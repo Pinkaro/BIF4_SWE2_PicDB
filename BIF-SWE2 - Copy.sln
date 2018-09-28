@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIF-SWE2.UnitTests", "..\un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIF-SWE2.Interfaces", "..\unit-tests\CS\BIF-SWE2.Interfaces\BIF-SWE2.Interfaces.csproj", "{27C44945-CB10-48BF-AD69-457D496B32A2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyUnitTests", "MyUnitTests\MyUnitTests.csproj", "{98830411-8690-49D2-A59F-3F4E162B2121}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,14 @@ Global
 		{27C44945-CB10-48BF-AD69-457D496B32A2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{27C44945-CB10-48BF-AD69-457D496B32A2}.Release|x86.ActiveCfg = Release|Any CPU
 		{27C44945-CB10-48BF-AD69-457D496B32A2}.Release|x86.Build.0 = Release|Any CPU
+		{98830411-8690-49D2-A59F-3F4E162B2121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98830411-8690-49D2-A59F-3F4E162B2121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98830411-8690-49D2-A59F-3F4E162B2121}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{98830411-8690-49D2-A59F-3F4E162B2121}.Debug|x86.Build.0 = Debug|Any CPU
+		{98830411-8690-49D2-A59F-3F4E162B2121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98830411-8690-49D2-A59F-3F4E162B2121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98830411-8690-49D2-A59F-3F4E162B2121}.Release|x86.ActiveCfg = Release|Any CPU
+		{98830411-8690-49D2-A59F-3F4E162B2121}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
