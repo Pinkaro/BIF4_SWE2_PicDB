@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BIF.SWE2.Interfaces;
+﻿using BIF.SWE2.Interfaces;
 using BIF.SWE2.Interfaces.ViewModels;
-using PicDB;
-using PicDB.Mocks;
-using PicDB.Models;
 using PicDB.Layers;
+using PicDB.ViewModels;
 
-namespace Uebungen
+namespace PicDB.Uebungen
 {
     public class UEB3 : IUEB3
     {

@@ -9,7 +9,10 @@ using PicDB.Models;
 
 namespace PicDB.ViewModels
 {
-    class PictureListViewModel : ViewModelNotifier, IPictureListViewModel
+    /// <summary>
+    /// ViewModel of a picture
+    /// </summary>
+    public class PictureListViewModel : ViewModelNotifier, IPictureListViewModel
     {
         private BusinessLayer bl;
         public PictureListViewModel()
@@ -17,18 +20,31 @@ namespace PicDB.ViewModels
             bl = new BusinessLayer();
             SyncAndUpdatePictureList();
         }
-
+        /// <summary>
+        /// OBSOLETE: All prev. pictures to the current selected picture.
+        /// </summary>
         public IEnumerable<IPictureViewModel> PrevPictures => throw new NotImplementedException();
-
+        /// <summary>
+        /// OBSOLETE: All next pictures to the current selected picture.
+        /// </summary>
         public IEnumerable<IPictureViewModel> NextPictures => throw new NotImplementedException();
-
+        /// <summary>
+        /// OBSOLETE: Number of all images
+        /// </summary>
         public int Count => throw new NotImplementedException();
-
+        /// <summary>
+        /// OBSOLETE: The current Index, 1 based
+        /// </summary>
         public int CurrentIndex => throw new NotImplementedException();
-
+        /// <summary>
+        /// OBSOLETE: {CurrentIndex} of {Cout}
+        /// </summary>
         public string CurrentPictureAsString => throw new NotImplementedException();
 
         private IPictureViewModel _currentPicture;
+        /// <summary>
+        /// ViewModel of the current picture
+        /// </summary>
         public IPictureViewModel CurrentPicture
         {
             get => _currentPicture;
@@ -45,6 +61,9 @@ namespace PicDB.ViewModels
         private ObservableCollection<IPictureViewModel> _backupList;
         private ObservableCollection<IPictureViewModel> _list = new ObservableCollection<IPictureViewModel>();
 
+        /// <summary>
+        /// List of all PictureViewModels
+        /// </summary>
         public IEnumerable<IPictureViewModel> List
         {
             get => _list;
@@ -55,11 +74,17 @@ namespace PicDB.ViewModels
             }
         }
 
+        /// <summary>
+        /// Resets a modified list to its original state.
+        /// </summary>
         public void ResetList()
         {
             _list = new ObservableCollection<IPictureViewModel>(_backupList);
         }
 
+        /// <summary>
+        /// Syncs the list with the database
+        /// </summary>
         public void SyncAndUpdatePictureList()
         {
             bl.Sync();

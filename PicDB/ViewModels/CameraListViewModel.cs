@@ -9,9 +9,15 @@ using System.Text;
 
 namespace PicDB.ViewModels
 {
-    class CameraListViewModel : ViewModelNotifier, ICameraListViewModel
+    /// <summary>
+    /// A viewmodel of all cameras
+    /// </summary>
+    public class CameraListViewModel : ViewModelNotifier, ICameraListViewModel
     {
         private IEnumerable<ICameraViewModel> _list;
+        /// <summary>
+        /// A list of all CameraViewModels
+        /// </summary>
         public IEnumerable<ICameraViewModel> List
         {
             get => _list;
@@ -23,6 +29,9 @@ namespace PicDB.ViewModels
         }
 
         private ICameraViewModel _currentCamera;
+        /// <summary>
+        /// Reference to the currently selected camera in the UI
+        /// </summary>
         public ICameraViewModel CurrentCamera
         {
             get => _currentCamera;
@@ -38,6 +47,9 @@ namespace PicDB.ViewModels
             SynchronizeCameras();
         }
 
+        /// <summary>
+        /// Synchronizes all cameras to the UI
+        /// </summary>
         public void SynchronizeCameras()
         {
             var bl = new BusinessLayer();

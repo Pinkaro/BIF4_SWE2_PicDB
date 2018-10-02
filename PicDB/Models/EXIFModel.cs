@@ -8,7 +8,10 @@ using BIF.SWE2.Interfaces.ViewModels;
 
 namespace PicDB.Models
 {
-    class EXIFModel : IEXIFModel
+    /// <summary>
+    /// A model for EXIF Information of a picture
+    /// </summary>
+    public class EXIFModel : IEXIFModel
     {
         public EXIFModel()
         {
@@ -29,11 +32,29 @@ namespace PicDB.Models
             ExposureProgram = ConvertExposureProgram(viewModel.ExposureProgram);
         }
 
+        /// <summary>
+        /// Name of camera
+        /// </summary>
         public string Make { get; set; }
+        /// <summary>
+        /// Aperture time
+        /// </summary>
         public decimal FNumber { get; set; }
+        /// <summary>
+        /// Exposure time
+        /// </summary>
         public decimal ExposureTime { get; set; }
+        /// <summary>
+        /// ISO value
+        /// </summary>
         public decimal ISOValue { get; set; }
+        /// <summary>
+        /// Flash yes/no
+        /// </summary>
         public bool Flash { get; set; }
+        /// <summary>
+        /// Exposure program
+        /// </summary>
         public ExposurePrograms ExposureProgram { get; set; }
 
         private ExposurePrograms ConvertExposureProgram(string ExposureProgramAsString)

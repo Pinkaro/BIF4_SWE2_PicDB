@@ -7,51 +7,80 @@ using BIF.SWE2.Interfaces;
 using BIF.SWE2.Interfaces.Models;
 using BIF.SWE2.Interfaces.ViewModels;
 using PicDB.Models;
+using PicDB.utils;
 
 namespace PicDB.Layers
 {
-    class BusinessLayer : IBusinessLayer
+    /// <summary>
+    /// The businessLayer implements all use cases and is the connection to the DataAccessLayer.
+    /// </summary>
+    public class BusinessLayer : IBusinessLayer
     {
+        /// <summary>
+        /// Instance to connect BusinessLayer and DataAccessLayer.
+        /// </summary>
         public IDataAccessLayer DataAccessLayer;
-        public string PathFolder;
+
         public BusinessLayer()
         {
-            DataAccessLayer = new DataAccessLayer();
-            PathFolder = GlobalInformation.Path;
+            DataAccessLayerFactory factory = DataAccessLayerFactory.Instance;
+            DataAccessLayer = factory.CreateDataAccessLayer(false);
         }
 
-        public BusinessLayer(IDataAccessLayer al, string picturesPathFolderPath)
-        {
-            this.DataAccessLayer = al;
-            this.PathFolder = picturesPathFolderPath;
-        }
-
+        /// <summary>
+        /// Returns a list of ALL Pictures from the directory, based on a database query.
+        /// </summary>
+        /// <returns>IEnumerable of IPicturemodels</returns>
         public IEnumerable<IPictureModel> GetPictures()
         {
             return DataAccessLayer.GetPictures(null, null, null, null);
         }
 
+        /// <summary>
+        /// Returns a filterd list of Pictures from the directory, based on a database query.
+        /// </summary>
+        /// <param name="namePart">A filter for filename</param>
+        /// <param name="photographerParts">A filter for a photographer</param>
+        /// <param name="iptcParts">A filter for IPTC information</param>
+        /// <param name="exifParts">A filter for EXIF information</param>
+        /// <returns></returns>
         public IEnumerable<IPictureModel> GetPictures(string namePart, IPhotographerModel photographerParts, IIPTCModel iptcParts,
             IEXIFModel exifParts)
         {
             return DataAccessLayer.GetPictures(namePart, photographerParts, iptcParts, exifParts);
         }
 
+        /// <summary>
+        /// Returns ONE Picture from the database.
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public IPictureModel GetPicture(int ID)
         {
             return DataAccessLayer.GetPicture(ID);
         }
 
+        /// <summary>
+        /// Saves all changes for one picture to the database.
+        /// </summary>
+        /// <param name="picture"></param>
         public void Save(IPictureModel picture)
         {
             DataAccessLayer.Save(picture);
         }
 
+        /// <summary>
+        /// Deletes a Picture from the database AND from the file system.
+        /// </summary>
+        /// <param name="ID"></param>
         public void DeletePicture(int ID)
         {
             DataAccessLayer.DeletePicture(ID);
         }
 
+        /// <summary>
+        /// Syncs the picture folder with the database.
+        /// </summary>
         public void Sync()
         {
             //Alle Filenamen holen die sich im angegebenen Verzeichnis finden
@@ -86,26 +115,47 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Returns a list of ALL photographers, based on a database query.
+        /// </summary>
+        /// <returns>IEnumerable of IPhotographerModel</returns>
         public IEnumerable<IPhotographerModel> GetPhotographers()
         {
             return DataAccessLayer.GetPhotographers();
         }
 
+        /// <summary>
+        /// Returns a list of ONE photographers, based on a database query.
+        /// </summary>
+        /// <returns>IEnumerable of IPhotographerModel</returns>
         public IPhotographerModel GetPhotographer(int ID)
         {
             return DataAccessLayer.GetPhotographer(ID);
         }
 
+        /// <summary>
+        /// Saves all changes of one photographer to the database.
+        /// </summary>
+        /// <param name="photographer"></param>
         public void Save(IPhotographerModel photographer)
         {
             DataAccessLayer.Save(photographer);
         }
 
+        /// <summary>
+        /// Deletes a photographer from database based on given ID
+        /// </summary>
+        /// <param name="ID"></param>
         public void DeletePhotographer(int ID)
         {
             DataAccessLayer.DeletePhotographer(ID);
         }
 
+        /// <summary>
+        /// Extracts IPTC information from a picture. NOTE: You may simulate the action.
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public IIPTCModel ExtractIPTC(string filename)
         {
             var iptcData = new IPTCModel();
@@ -119,6 +169,11 @@ namespace PicDB.Layers
             return iptcData;
         }
 
+        /// <summary>
+        /// Extracts EXIF information from a picture. NOTE: You may simulate the action.
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public IEXIFModel ExtractEXIF(string filename)
         {
             var exifData = new EXIFModel();
@@ -133,52 +188,85 @@ namespace PicDB.Layers
             return exifData;
         }
 
+        /// <summary>
+        /// Writes IPTC information back to a picture. NOTE: You may simulate the action.
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <param name="iptc"></param>
         public void WriteIPTC(string filename, IIPTCModel iptc)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Returns a list of ALL Cameras.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ICameraModel> GetCameras()
         {
             return DataAccessLayer.GetCameras();
         }
 
+        /// <summary>
+        /// Returns ONE Camera
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public ICameraModel GetCamera(int ID)
         {
             return DataAccessLayer.GetCamera(ID);
         }
 
-        public void CurrentPictureChanged(IPictureViewModel currentPicture)
-        {
-            
-        }
-
+        /// <summary>
+        /// Updates ONE camera
+        /// </summary>
+        /// <param name="cameraModel"></param>
         public void UpdateCamera(ICameraModel cameraModel)
         {
             ((DataAccessLayer) DataAccessLayer).UpdateCamera(cameraModel);
         }
 
+        /// <summary>
+        /// Deletes ONE camera based on ID
+        /// </summary>
+        /// <param name="ID"></param>
         public void DeleteCamera(int ID)
         {
             ((DataAccessLayer) DataAccessLayer).DeleteCamera(ID);
         }
 
+        /// <summary>
+        /// Saves a camera to the database
+        /// </summary>
+        /// <param name="camera"></param>
         public void SaveCamera(CameraModel camera)
         {
             var dal = (DataAccessLayer)DataAccessLayer;
             dal.SaveCamera(camera);
         }
 
+        /// <summary>
+        /// Updates a photographer
+        /// </summary>
+        /// <param name="photographerModel"></param>
         public void UpdatePhotographer(PhotographerModel photographerModel)
         {
             ((DataAccessLayer) DataAccessLayer).UpdatePhotographer(photographerModel);
         }
 
+        /// <summary>
+        /// Saves a photographer to the database
+        /// </summary>
+        /// <param name="photographerModel"></param>
         public void SavePhotographer(PhotographerModel photographerModel)
         {
             ((DataAccessLayer)DataAccessLayer).SavePhotographer(photographerModel);
         }
 
+        /// <summary>
+        /// Returns a dictionary with all tags as their key and a count of occurences as their value.
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, int> GetTagCount()
         {
             return ((DataAccessLayer) DataAccessLayer).GetTagCount();

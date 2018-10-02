@@ -1,0 +1,3 @@
+18:36:34,640 [PicDB.MainWindow] FATAL - WARNING --- WARNING: PATRISCH EXPLODED!
+18:38:14,749 [PicDB.MainWindow] FATAL - WARNING --- WARNING: PATRISCH EXPLODED!
+19:36:12,935 [C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\PicDB\MainWindow.xaml.cs] ERROR - Testing LogHelper class

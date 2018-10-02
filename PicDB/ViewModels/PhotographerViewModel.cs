@@ -1,13 +1,13 @@
-﻿using BIF.SWE2.Interfaces.Models;
-using BIF.SWE2.Interfaces.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Text;
-using PicDB.ViewModels;
+using BIF.SWE2.Interfaces.Models;
+using BIF.SWE2.Interfaces.ViewModels;
 
-namespace PicDB.Models
+namespace PicDB.ViewModels
 {
+    /// <summary>
+    /// ViewModel of a photographer
+    /// </summary>
     public class PhotographerViewModel : IPhotographerViewModel
     {
         public PhotographerViewModel(IPhotographerModel mdl)
@@ -21,16 +21,33 @@ namespace PicDB.Models
         }
 
         public PhotographerViewModel() { }
-
+        /// <summary>
+        /// Database primary key
+        /// </summary>
         public int ID { get; set; }
-
+        /// <summary>
+        /// Firstname, including middle name
+        /// </summary>
         public string FirstName { get; set; }
+        /// <summary>
+        /// Lastname
+        /// </summary>
         public string LastName { get; set; }
+        /// <summary>
+        /// Birthday
+        /// </summary>
         public DateTime? BirthDay { get; set; }
+        /// <summary>
+        /// Notes
+        /// </summary>
         public string Notes { get; set; }
-
+        /// <summary>
+        /// Returns the number of Pictures
+        /// </summary>
         public int NumberOfPictures { get; set; }
-
+        /// <summary>
+        /// Returns true, if the model is valid
+        /// </summary>
         public bool IsValid
         {
             get
@@ -45,7 +62,9 @@ namespace PicDB.Models
                 }
             }
         }
-
+        /// <summary>
+        /// Returns a summary of validation errors
+        /// </summary>
         public string ValidationSummary
         {
             get
@@ -72,7 +91,9 @@ namespace PicDB.Models
                 }
             }
         }
-
+        /// <summary>
+        /// returns true if the last name is valid
+        /// </summary>
         public bool IsValidLastName
         {
             get
@@ -87,7 +108,9 @@ namespace PicDB.Models
                 }
             }
         }
-
+        /// <summary>
+        /// returns true if the birthday is valid
+        /// </summary>
         public bool IsValidBirthDay
         {
             get

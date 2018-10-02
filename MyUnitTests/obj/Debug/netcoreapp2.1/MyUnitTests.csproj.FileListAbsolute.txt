@@ -21,3 +21,4 @@ C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\MyUnitTests\bin\Debug\netcoreap
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\MyUnitTests\bin\Debug\netcoreapp2.1\PdfSharp.xml
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\MyUnitTests\bin\Debug\netcoreapp2.1\de\PdfSharp.resources.dll
 C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\MyUnitTests\obj\Debug\netcoreapp2.1\MyUnitTests.csproj.CopyComplete
+C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\MyUnitTests\bin\Debug\netcoreapp2.1\BIF-SWE2.Interfaces.pdb

@@ -7,7 +7,10 @@ using BIF.SWE2.Interfaces.ViewModels;
 
 namespace PicDB.Models
 {
-    class IPTCModel : IIPTCModel
+    /// <summary>
+    /// A model for IPTC information of a picture
+    /// </summary>
+    public class IPTCModel : IIPTCModel
     {
         public IPTCModel()
         {
@@ -27,10 +30,25 @@ namespace PicDB.Models
             Caption = viewModel.Caption;
         }
 
+        /// <summary>
+        /// A list of keywords
+        /// </summary>
         public string Keywords { get; set; }
+        /// <summary>
+        /// Name of the photographer
+        /// </summary>
         public string ByLine { get; set; }
+        /// <summary>
+        /// copyright notices
+        /// </summary>
         public string CopyrightNotice { get; set; }
+        /// <summary>
+        /// Headline of picture
+        /// </summary>
         public string Headline { get; set; }
+        /// <summary>
+        /// description of picture
+        /// </summary>
         public string Caption { get; set; }
     }
 }

@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BIF.SWE2.Interfaces;
+﻿using BIF.SWE2.Interfaces;
 using BIF.SWE2.Interfaces.Models;
 using BIF.SWE2.Interfaces.ViewModels;
-using PicDB;
 using PicDB.Layers;
 using PicDB.Mocks;
 using PicDB.Models;
 using PicDB.ViewModels;
 
-namespace Uebungen
+namespace PicDB.Uebungen
 {
     public class UEB2 : IUEB2
     {
@@ -53,7 +48,7 @@ namespace Uebungen
 
         public void TestSetup(string picturePath)
         {
-            businessLayer.PathFolder = picturePath;
+            //businessLayer.PathFolder = picturePath;
         }
 
         public ICameraModel GetCameraModel(string producer, string make)

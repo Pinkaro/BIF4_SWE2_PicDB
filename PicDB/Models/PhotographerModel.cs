@@ -7,7 +7,10 @@ using BIF.SWE2.Interfaces.ViewModels;
 
 namespace PicDB.Models
 {
-    class PhotographerModel : IPhotographerModel
+    /// <summary>
+    /// A model of a photographer
+    /// </summary>
+    public class PhotographerModel : IPhotographerModel
     {
         public PhotographerModel()
         {
@@ -27,9 +30,16 @@ namespace PicDB.Models
             BirthDay = viewModel.BirthDay;
             Notes = viewModel.Notes;
         }
+
+        /// <summary>
+        /// ID of a photographer (must match with database)
+        /// </summary>
         public int ID { get; set; }
 
         private string _firstName;
+        /// <summary>
+        /// First name of a photographer
+        /// </summary>
         public string FirstName {
             get
             {
@@ -50,6 +60,9 @@ namespace PicDB.Models
         }
 
         private string _lastName;
+        /// <summary>
+        /// Last name of a photographer
+        /// </summary>
         public string LastName
         {
             get
@@ -69,7 +82,14 @@ namespace PicDB.Models
                 }
             }
         }
+
+        /// <summary>
+        /// Datetime of birth
+        /// </summary>
         public DateTime? BirthDay { get; set; }
+        /// <summary>
+        /// Notes
+        /// </summary>
         public string Notes { get; set; }
     }
 }

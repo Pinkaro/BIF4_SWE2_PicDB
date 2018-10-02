@@ -9,6 +9,9 @@ using BIF.SWE2.Interfaces.Models;
 
 namespace PicDB.ViewModels
 {
+    /// <summary>
+    /// A viewmodel of a camera
+    /// </summary>
     public class CameraViewModel : ICameraViewModel
     {
         public CameraViewModel() { }
@@ -25,14 +28,35 @@ namespace PicDB.ViewModels
             Notes = model.Notes;
         }
 
+        /// <summary>
+        /// Database primary key
+        /// </summary>
         public int ID { get; set; }
+        /// <summary>
+        /// Name of the producer
+        /// </summary>
         public string Producer { get; set; }
+        /// <summary>
+        /// Name of the camera
+        /// </summary>
         public string Make { get; set; }
+        /// <summary>
+        /// Datetime of buydate
+        /// </summary>
         public DateTime? BoughtOn { get; set; }
+        /// <summary>
+        /// Notes
+        /// </summary>
         public string Notes { get; set; }
 
+        /// <summary>
+        /// OBSOLETE
+        /// </summary>
         public int NumberOfPictures => throw new NotImplementedException();
 
+        /// <summary>
+        /// Checks if a camera viewmodel is valid
+        /// </summary>
         public bool IsValid
         {
             get
@@ -48,6 +72,9 @@ namespace PicDB.ViewModels
             }
         }
 
+        /// <summary>
+        /// Summary if validation check
+        /// </summary>
         public string ValidationSummary
         {
             get
@@ -80,6 +107,9 @@ namespace PicDB.ViewModels
             }
         }
 
+        /// <summary>
+        /// Checks if producer is valid
+        /// </summary>
         public bool IsValidProducer
         {
             get
@@ -95,6 +125,9 @@ namespace PicDB.ViewModels
             }
         }
 
+        /// <summary>
+        /// Checks if make is valid
+        /// </summary>
         public bool IsValidMake
         {
             get
@@ -110,6 +143,9 @@ namespace PicDB.ViewModels
             }
         }
 
+        /// <summary>
+        /// Checks if buydate is valid
+        /// </summary>
         public bool IsValidBoughtOn
         {
             get
@@ -125,9 +161,20 @@ namespace PicDB.ViewModels
             }
         }
 
+        /// <summary>
+        /// Max ISO Value for good results. 0 means "not defined"
+        /// </summary>
         public decimal ISOLimitGood { get; set; }
+        /// <summary>
+        /// Max ISO Value for acceptable results. 0 means "not defined"
+        /// </summary>
         public decimal ISOLimitAcceptable { get; set; }
 
+        /// <summary>
+        /// OBSOLETE
+        /// </summary>
+        /// <param name="iso"></param>
+        /// <returns></returns>
         public ISORatings TranslateISORating(decimal iso)
         {
             throw new NotImplementedException();

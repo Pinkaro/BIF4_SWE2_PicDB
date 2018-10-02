@@ -1,0 +1,312 @@
+\hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer}{}\section{Pic\+D\+B.\+Layers.\+Data\+Access\+Layer Class Reference}
+\label{class_pic_d_b_1_1_layers_1_1_data_access_layer}\index{Pic\+D\+B.\+Layers.\+Data\+Access\+Layer@{Pic\+D\+B.\+Layers.\+Data\+Access\+Layer}}
+
+
+Handles the access to the database.  
+
+
+Inheritance diagram for Pic\+D\+B.\+Layers.\+Data\+Access\+Layer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_pic_d_b_1_1_layers_1_1_data_access_layer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_aa596817ac8c89272846f1a8196408178}{Data\+Access\+Layer}} ()
+\begin{DoxyCompactList}\small\item\em In the constructor only the connection string based on the config file is being set. \end{DoxyCompactList}\item 
+I\+Enumerable$<$ I\+Picture\+Model $>$ \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a0866667e7f98fc65e29c5b1fce4eff84}{Get\+Pictures}} (string name\+Part, I\+Photographer\+Model photographer\+Parts, I\+I\+P\+T\+C\+Model iptc\+Parts, I\+E\+X\+I\+F\+Model exif\+Parts)
+\begin{DoxyCompactList}\small\item\em Returns a list of A\+LL Pictures from the directory, based on a database query. \end{DoxyCompactList}\item 
+I\+Picture\+Model \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_ac41c90cb91e0df488dc886db37fdc07b}{Get\+Picture}} (int ID)
+\begin{DoxyCompactList}\small\item\em Returns O\+NE Picture from the database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a7fd40a4ce08e73fa15fd964138d95f20}{Save}} (I\+Picture\+Model picture)
+\begin{DoxyCompactList}\small\item\em Saves all changes for one picture to the database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a503286ca6863223b52464ae483f1b9e3}{Delete\+Picture}} (int ID)
+\begin{DoxyCompactList}\small\item\em Deletes a Picture from the database A\+ND from the file system. \end{DoxyCompactList}\item 
+I\+Enumerable$<$ I\+Photographer\+Model $>$ \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a41fdea4749eb2ff6826099bae90d0620}{Get\+Photographers}} ()
+\begin{DoxyCompactList}\small\item\em Returns a list of A\+LL photographers, based on a database query. \end{DoxyCompactList}\item 
+I\+Photographer\+Model \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a1a5096b0ee7c2e9c8a051af5f74ad2ec}{Get\+Photographer}} (int ID)
+\begin{DoxyCompactList}\small\item\em Returns a list of O\+NE photographers, based on a database query. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a4e3554f691b1aae313a9c1162ccd3bee}{Save}} (I\+Photographer\+Model photographer)
+\begin{DoxyCompactList}\small\item\em Saves all changes of one photographer to the database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_abbdd8f6f2145b58a3c1b084d203510f6}{Delete\+Photographer}} (int ID)
+\begin{DoxyCompactList}\small\item\em Deletes a photographer from database based on given ID \end{DoxyCompactList}\item 
+I\+Enumerable$<$ I\+Camera\+Model $>$ \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a0aef35ea518e7020dfeb77b9e7f556e9}{Get\+Cameras}} ()
+\begin{DoxyCompactList}\small\item\em Returns a list of A\+LL Cameras. \end{DoxyCompactList}\item 
+I\+Camera\+Model \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a58aa8e9e53b9c7fdcacb48582daf9f36}{Get\+Camera}} (int ID)
+\begin{DoxyCompactList}\small\item\em Returns O\+NE Camera \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a1909e4d371b56f0b5d400658ed0b167b}{Update\+Camera}} (I\+Camera\+Model camera\+Model)
+\begin{DoxyCompactList}\small\item\em Updates O\+NE camera \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_aae4b79abc6acf09649d528b31b1e3f17}{Delete\+Camera}} (int ID)
+\begin{DoxyCompactList}\small\item\em Deletes O\+NE camera based on ID \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_af7dbcbd6f4ef0058b7b33a052eca4c06}{Save\+Camera}} (\mbox{\hyperlink{class_pic_d_b_1_1_models_1_1_camera_model}{Camera\+Model}} camera)
+\begin{DoxyCompactList}\small\item\em Saves a camera to the database \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a6b4baf032a0dc297b35f28ab2455b8f5}{Save\+Photographer}} (\mbox{\hyperlink{class_pic_d_b_1_1_models_1_1_photographer_model}{Photographer\+Model}} photographer)
+\begin{DoxyCompactList}\small\item\em Saves a photographer to the database \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_a6ec13a97382256d357823c17f40bcf65}{Update\+Photographer}} (\mbox{\hyperlink{class_pic_d_b_1_1_models_1_1_photographer_model}{Photographer\+Model}} photographer)
+\begin{DoxyCompactList}\small\item\em Updates a photographer \end{DoxyCompactList}\item 
+Dictionary$<$ string, int $>$ \mbox{\hyperlink{class_pic_d_b_1_1_layers_1_1_data_access_layer_aa66634d35385c5d84a28352d859833bc}{Get\+Tag\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Returns a dictionary with all tags as their key and a count of occurences as their value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Handles the access to the database. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_aa596817ac8c89272846f1a8196408178}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_aa596817ac8c89272846f1a8196408178}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Data\+Access\+Layer@{Data\+Access\+Layer}}
+\index{Data\+Access\+Layer@{Data\+Access\+Layer}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Data\+Access\+Layer()}{DataAccessLayer()}}
+{\footnotesize\ttfamily Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Data\+Access\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+In the constructor only the connection string based on the config file is being set. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_aae4b79abc6acf09649d528b31b1e3f17}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_aae4b79abc6acf09649d528b31b1e3f17}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Delete\+Camera@{Delete\+Camera}}
+\index{Delete\+Camera@{Delete\+Camera}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Delete\+Camera()}{DeleteCamera()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Delete\+Camera (\begin{DoxyParamCaption}\item[{int}]{ID }\end{DoxyParamCaption})}
+
+
+
+Deletes O\+NE camera based on ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_abbdd8f6f2145b58a3c1b084d203510f6}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_abbdd8f6f2145b58a3c1b084d203510f6}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Delete\+Photographer@{Delete\+Photographer}}
+\index{Delete\+Photographer@{Delete\+Photographer}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Delete\+Photographer()}{DeletePhotographer()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Delete\+Photographer (\begin{DoxyParamCaption}\item[{int}]{ID }\end{DoxyParamCaption})}
+
+
+
+Deletes a photographer from database based on given ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a503286ca6863223b52464ae483f1b9e3}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a503286ca6863223b52464ae483f1b9e3}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Delete\+Picture@{Delete\+Picture}}
+\index{Delete\+Picture@{Delete\+Picture}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Delete\+Picture()}{DeletePicture()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Delete\+Picture (\begin{DoxyParamCaption}\item[{int}]{ID }\end{DoxyParamCaption})}
+
+
+
+Deletes a Picture from the database A\+ND from the file system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a58aa8e9e53b9c7fdcacb48582daf9f36}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a58aa8e9e53b9c7fdcacb48582daf9f36}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Get\+Camera@{Get\+Camera}}
+\index{Get\+Camera@{Get\+Camera}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Get\+Camera()}{GetCamera()}}
+{\footnotesize\ttfamily I\+Camera\+Model Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Get\+Camera (\begin{DoxyParamCaption}\item[{int}]{ID }\end{DoxyParamCaption})}
+
+
+
+Returns O\+NE Camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a0aef35ea518e7020dfeb77b9e7f556e9}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a0aef35ea518e7020dfeb77b9e7f556e9}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Get\+Cameras@{Get\+Cameras}}
+\index{Get\+Cameras@{Get\+Cameras}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Get\+Cameras()}{GetCameras()}}
+{\footnotesize\ttfamily I\+Enumerable$<$I\+Camera\+Model$>$ Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Get\+Cameras (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a list of A\+LL Cameras. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a1a5096b0ee7c2e9c8a051af5f74ad2ec}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a1a5096b0ee7c2e9c8a051af5f74ad2ec}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Get\+Photographer@{Get\+Photographer}}
+\index{Get\+Photographer@{Get\+Photographer}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Get\+Photographer()}{GetPhotographer()}}
+{\footnotesize\ttfamily I\+Photographer\+Model Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Get\+Photographer (\begin{DoxyParamCaption}\item[{int}]{ID }\end{DoxyParamCaption})}
+
+
+
+Returns a list of O\+NE photographers, based on a database query. 
+
+\begin{DoxyReturn}{Returns}
+I\+Enumerable of I\+Photographer\+Model
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a41fdea4749eb2ff6826099bae90d0620}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a41fdea4749eb2ff6826099bae90d0620}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Get\+Photographers@{Get\+Photographers}}
+\index{Get\+Photographers@{Get\+Photographers}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Get\+Photographers()}{GetPhotographers()}}
+{\footnotesize\ttfamily I\+Enumerable$<$I\+Photographer\+Model$>$ Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Get\+Photographers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a list of A\+LL photographers, based on a database query. 
+
+\begin{DoxyReturn}{Returns}
+I\+Enumerable of I\+Photographer\+Model
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_ac41c90cb91e0df488dc886db37fdc07b}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_ac41c90cb91e0df488dc886db37fdc07b}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Get\+Picture@{Get\+Picture}}
+\index{Get\+Picture@{Get\+Picture}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Get\+Picture()}{GetPicture()}}
+{\footnotesize\ttfamily I\+Picture\+Model Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Get\+Picture (\begin{DoxyParamCaption}\item[{int}]{ID }\end{DoxyParamCaption})}
+
+
+
+Returns O\+NE Picture from the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a0866667e7f98fc65e29c5b1fce4eff84}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a0866667e7f98fc65e29c5b1fce4eff84}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Get\+Pictures@{Get\+Pictures}}
+\index{Get\+Pictures@{Get\+Pictures}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Get\+Pictures()}{GetPictures()}}
+{\footnotesize\ttfamily I\+Enumerable$<$I\+Picture\+Model$>$ Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Get\+Pictures (\begin{DoxyParamCaption}\item[{string}]{name\+Part,  }\item[{I\+Photographer\+Model}]{photographer\+Parts,  }\item[{I\+I\+P\+T\+C\+Model}]{iptc\+Parts,  }\item[{I\+E\+X\+I\+F\+Model}]{exif\+Parts }\end{DoxyParamCaption})}
+
+
+
+Returns a list of A\+LL Pictures from the directory, based on a database query. 
+
+\begin{DoxyReturn}{Returns}
+I\+Enumerable of I\+Picturemodels
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_aa66634d35385c5d84a28352d859833bc}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_aa66634d35385c5d84a28352d859833bc}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Get\+Tag\+Count@{Get\+Tag\+Count}}
+\index{Get\+Tag\+Count@{Get\+Tag\+Count}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Get\+Tag\+Count()}{GetTagCount()}}
+{\footnotesize\ttfamily Dictionary$<$string, int$>$ Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Get\+Tag\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a dictionary with all tags as their key and a count of occurences as their value. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a7fd40a4ce08e73fa15fd964138d95f20}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a7fd40a4ce08e73fa15fd964138d95f20}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Save@{Save}}
+\index{Save@{Save}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Save()}{Save()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Save (\begin{DoxyParamCaption}\item[{I\+Picture\+Model}]{picture }\end{DoxyParamCaption})}
+
+
+
+Saves all changes for one picture to the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em picture} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a4e3554f691b1aae313a9c1162ccd3bee}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a4e3554f691b1aae313a9c1162ccd3bee}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Save@{Save}}
+\index{Save@{Save}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Save()}{Save()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Save (\begin{DoxyParamCaption}\item[{I\+Photographer\+Model}]{photographer }\end{DoxyParamCaption})}
+
+
+
+Saves all changes of one photographer to the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em photographer} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_af7dbcbd6f4ef0058b7b33a052eca4c06}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_af7dbcbd6f4ef0058b7b33a052eca4c06}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Save\+Camera@{Save\+Camera}}
+\index{Save\+Camera@{Save\+Camera}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Save\+Camera()}{SaveCamera()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Save\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pic_d_b_1_1_models_1_1_camera_model}{Camera\+Model}}}]{camera }\end{DoxyParamCaption})}
+
+
+
+Saves a camera to the database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a6b4baf032a0dc297b35f28ab2455b8f5}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a6b4baf032a0dc297b35f28ab2455b8f5}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Save\+Photographer@{Save\+Photographer}}
+\index{Save\+Photographer@{Save\+Photographer}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Save\+Photographer()}{SavePhotographer()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Save\+Photographer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pic_d_b_1_1_models_1_1_photographer_model}{Photographer\+Model}}}]{photographer }\end{DoxyParamCaption})}
+
+
+
+Saves a photographer to the database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em photographer\+Model} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a1909e4d371b56f0b5d400658ed0b167b}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a1909e4d371b56f0b5d400658ed0b167b}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Update\+Camera@{Update\+Camera}}
+\index{Update\+Camera@{Update\+Camera}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Update\+Camera()}{UpdateCamera()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Update\+Camera (\begin{DoxyParamCaption}\item[{I\+Camera\+Model}]{camera\+Model }\end{DoxyParamCaption})}
+
+
+
+Updates O\+NE camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera\+Model} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_layers_1_1_data_access_layer_a6ec13a97382256d357823c17f40bcf65}\label{class_pic_d_b_1_1_layers_1_1_data_access_layer_a6ec13a97382256d357823c17f40bcf65}} 
+\index{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}!Update\+Photographer@{Update\+Photographer}}
+\index{Update\+Photographer@{Update\+Photographer}!Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer@{Pic\+D\+B\+::\+Layers\+::\+Data\+Access\+Layer}}
+\subsubsection{\texorpdfstring{Update\+Photographer()}{UpdatePhotographer()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+Layers.\+Data\+Access\+Layer.\+Update\+Photographer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pic_d_b_1_1_models_1_1_photographer_model}{Photographer\+Model}}}]{photographer }\end{DoxyParamCaption})}
+
+
+
+Updates a photographer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em photographer\+Model} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+A\+A\+A-\/\+Technikum\+\_\+\+B\+W\+I/fourth\+Semester/\+S\+W\+E2/\+S\+W\+E2-\/\+C\+S/\+Pic\+D\+B/\+Layers/Data\+Access\+Layer.\+cs\end{DoxyCompactItemize}

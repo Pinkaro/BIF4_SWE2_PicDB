@@ -11,16 +11,26 @@ using PicDB.Models;
 
 namespace PicDB.Layers
 {
-    class DataAccessLayer : IDataAccessLayer
+    /// <summary>
+    /// Handles the access to the database.
+    /// </summary>
+    public class DataAccessLayer : IDataAccessLayer
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private string ConnectionString { get; set; }
 
+        /// <summary>
+        /// In the constructor only the connection string based on the config file is being set.
+        /// </summary>
         public DataAccessLayer()
         {
             ConnectionString = GlobalInformation.ConnectionString;
         }
 
+        /// <summary>
+        /// Returns a list of ALL Pictures from the directory, based on a database query.
+        /// </summary>
+        /// <returns>IEnumerable of IPicturemodels</returns>
         public IEnumerable<IPictureModel> GetPictures(string namePart, IPhotographerModel photographerParts, IIPTCModel iptcParts,
             IEXIFModel exifParts)
         {
@@ -54,6 +64,11 @@ namespace PicDB.Layers
             return liste;
         }
 
+        /// <summary>
+        /// Returns ONE Picture from the database.
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public IPictureModel GetPicture(int ID)
         {
             var picture = new PictureModel
@@ -114,6 +129,10 @@ namespace PicDB.Layers
             return picture;
         }
 
+        /// <summary>
+        /// Saves all changes for one picture to the database.
+        /// </summary>
+        /// <param name="picture"></param>
         public void Save(IPictureModel picture)
         {
             if (Exists(picture))
@@ -248,6 +267,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Deletes a Picture from the database AND from the file system.
+        /// </summary>
+        /// <param name="ID"></param>
         public void DeletePicture(int ID)
         {
             var itcpFk = 0;
@@ -287,6 +310,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Returns a list of ALL photographers, based on a database query.
+        /// </summary>
+        /// <returns>IEnumerable of IPhotographerModel</returns>
         public IEnumerable<IPhotographerModel> GetPhotographers()
         {
             var photographers = new List<PhotographerModel>();
@@ -319,6 +346,10 @@ namespace PicDB.Layers
             return photographers;
         }
 
+        /// <summary>
+        /// Returns a list of ONE photographers, based on a database query.
+        /// </summary>
+        /// <returns>IEnumerable of IPhotographerModel</returns>
         public IPhotographerModel GetPhotographer(int ID)
         {
             var photographer = new PhotographerModel();
@@ -351,6 +382,10 @@ namespace PicDB.Layers
             return photographer;
         }
 
+        /// <summary>
+        /// Saves all changes of one photographer to the database.
+        /// </summary>
+        /// <param name="photographer"></param>
         public void Save(IPhotographerModel photographer)
         {
             var query = String.Empty;
@@ -398,6 +433,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Deletes a photographer from database based on given ID
+        /// </summary>
+        /// <param name="ID"></param>
         public void DeletePhotographer(int ID)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -419,6 +458,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Returns a list of ALL Cameras.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ICameraModel> GetCameras()
         {
             var queryString =
@@ -452,6 +495,11 @@ namespace PicDB.Layers
             return liste;
         }
 
+        /// <summary>
+        /// Returns ONE Camera
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public ICameraModel GetCamera(int ID)
         {
             var queryString =
@@ -488,6 +536,11 @@ namespace PicDB.Layers
             return model;
         }
 
+        /// <summary>
+        /// Checks if given picture already exists within the database
+        /// </summary>
+        /// <param name="picture"></param>
+        /// <returns></returns>
         private bool Exists(IPictureModel picture)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -506,6 +559,11 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Checks if given photographer already exists within the database
+        /// </summary>
+        /// <param name="photographer"></param>
+        /// <returns></returns>
         private bool Exists(IPhotographerModel photographer)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -524,6 +582,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Updates ONE camera
+        /// </summary>
+        /// <param name="cameraModel"></param>
         public void UpdateCamera(ICameraModel cameraModel)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -559,6 +621,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Deletes ONE camera based on ID
+        /// </summary>
+        /// <param name="ID"></param>
         public void DeleteCamera(int ID)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -579,6 +645,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Saves a camera to the database
+        /// </summary>
+        /// <param name="camera"></param>
         public void SaveCamera(CameraModel camera)
         {
             //TODO: Save Camera to database
@@ -620,6 +690,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Saves a photographer to the database
+        /// </summary>
+        /// <param name="photographerModel"></param>
         public void SavePhotographer(PhotographerModel photographer)
         {
             //TODO: Save Photographer to database
@@ -657,6 +731,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Updates a photographer
+        /// </summary>
+        /// <param name="photographerModel"></param>
         public void UpdatePhotographer(PhotographerModel photographer)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -686,6 +764,10 @@ namespace PicDB.Layers
             }
         }
 
+        /// <summary>
+        /// Returns a dictionary with all tags as their key and a count of occurences as their value.
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, int> GetTagCount()
         {
             List<string> tagList = new List<string>();

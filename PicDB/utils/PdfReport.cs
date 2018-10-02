@@ -14,8 +14,15 @@ using PicDB.ViewModels;
 
 namespace PicDB.utils
 {
-    class PdfReport
+    /// <summary>
+    /// Use this to create reports as PDF file
+    /// </summary>
+    public class PdfReport
     {
+        /// <summary>
+        /// Creates a report of all tags
+        /// </summary>
+        /// <param name="tags"></param>
         public void CreateReport(string tags)
         {
             BusinessLayer bl = new BusinessLayer();
@@ -96,6 +103,10 @@ namespace PicDB.utils
 
         }
 
+        /// <summary>
+        /// Creates a report of a single picture.
+        /// </summary>
+        /// <param name="picture"></param>
         public void CreateReport(IPictureViewModel picture)
         {
             var report = new PdfDocument();

@@ -25,7 +25,7 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="_File">
-                <MenuItem Header="_Export PDF" Name="MenuExportPdf" Click="MenuExportPdf_Click"></MenuItem>
+                <MenuItem Header="_Export tag report" Name="MenuExportPdf" Click="MenuExportPdf_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Edit Cameras" Name="MenuEditCameras" Click="MenuEditCameras_Click"></MenuItem>

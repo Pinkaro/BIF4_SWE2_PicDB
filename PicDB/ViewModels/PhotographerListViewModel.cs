@@ -6,9 +6,15 @@ using PicDB.Models;
 
 namespace PicDB.ViewModels
 {
-    class PhotographerListViewModel : ViewModelNotifier, IPhotographerListViewModel
+    /// <summary>
+    /// ViewModel with a list of all photographers
+    /// </summary>
+    public class PhotographerListViewModel : ViewModelNotifier, IPhotographerListViewModel
     {
         private IEnumerable<IPhotographerViewModel> _list;
+        /// <summary>
+        /// List of all PhotographerViewModels
+        /// </summary>
         public IEnumerable<IPhotographerViewModel> List {
             get => _list;
             private set
@@ -17,7 +23,9 @@ namespace PicDB.ViewModels
                 NotifyPropertyChanged("List");
             }
         }
-
+        /// <summary>
+        /// The currently selected PhotographerViewModel
+        /// </summary>
         public IPhotographerViewModel CurrentPhotographer
         {
             get => CurrentPhotographer;
@@ -33,6 +41,9 @@ namespace PicDB.ViewModels
             SynchronizePhotographers();
         }
 
+        /// <summary>
+        /// Synchronizes photographerlist 
+        /// </summary>
         public void SynchronizePhotographers()
         {
             var bl = new BusinessLayer();

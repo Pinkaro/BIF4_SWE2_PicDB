@@ -2291,6 +2291,15 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
+      "BIF-SWE2.Interfaces/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/BIF-SWE2.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BIF-SWE2.Interfaces.dll": {}
+        }
+      },
       "PicDB/1.0.0": {
         "type": "project",
         "compile": {
@@ -7386,6 +7395,11 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
+    "BIF-SWE2.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../../unit-tests/CS/BIF-SWE2.Interfaces/BIF-SWE2.Interfaces.csproj",
+      "msbuildProject": "../../unit-tests/CS/BIF-SWE2.Interfaces/BIF-SWE2.Interfaces.csproj"
+    },
     "PicDB/1.0.0": {
       "type": "project",
       "path": "../PicDB/PicDB.csproj",
@@ -7394,6 +7408,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "BIF-SWE2.Interfaces >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 15.8.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "NUnit >= 3.10.1",
@@ -7434,6 +7449,9 @@
           "projectReferences": {
             "C:\\AAA-Technikum_BWI\\fourthSemester\\SWE2\\SWE2-CS\\PicDB\\PicDB.csproj": {
               "projectPath": "C:\\AAA-Technikum_BWI\\fourthSemester\\SWE2\\SWE2-CS\\PicDB\\PicDB.csproj"
+            },
+            "C:\\AAA-Technikum_BWI\\fourthSemester\\SWE2\\unit-tests\\CS\\BIF-SWE2.Interfaces\\BIF-SWE2.Interfaces.csproj": {
+              "projectPath": "C:\\AAA-Technikum_BWI\\fourthSemester\\SWE2\\unit-tests\\CS\\BIF-SWE2.Interfaces\\BIF-SWE2.Interfaces.csproj"
             }
           }
         }

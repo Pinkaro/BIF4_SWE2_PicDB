@@ -16,11 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\unit-tests\CS\BIF-SWE2.Interfaces\BIF-SWE2.Interfaces.csproj" />
     <ProjectReference Include="..\PicDB\PicDB.csproj" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy\config.txt $(ProjectDir)$(OutDir)config.txt" />
+    <Exec Command="xcopy C:\AAA-Technikum_BWI\fourthSemester\SWE2\SWE2-CS\deploy $(ProjectDir)$(OutDir) /I /Y" />
   </Target>
 
 </Project>

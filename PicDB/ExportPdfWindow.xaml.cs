@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PicDB.Models;
 using PicDB.utils;
+using PicDB.ViewModels;
 
 namespace PicDB
 {

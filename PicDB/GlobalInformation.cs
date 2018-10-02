@@ -5,14 +5,26 @@ using System.Text;
 
 namespace PicDB
 {
+    /// <summary>
+    /// This is a helper class, which contains the information of the config file
+    /// </summary>
     public static class GlobalInformation
     {
+        /// <summary>
+        /// The connection string for the database
+        /// </summary>
         public static string ConnectionString;
-
+        /// <summary>
+        /// Path to the pictures
+        /// </summary>
         public static string Path;
-
+        /// <summary>
+        /// Path where reports are being stored
+        /// </summary>
         public static string ReportPath;
-
+        /// <summary>
+        /// Reads the config file.
+        /// </summary>
         public static void ReadConfigFile()
         {
             var dict = new Dictionary<string, string>();

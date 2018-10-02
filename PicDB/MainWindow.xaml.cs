@@ -106,7 +106,7 @@ namespace PicDB
             }
         }
 
-        public void MenuOptionChangeHomeFolder_Click(object sender, RoutedEventArgs e)
+        private void MenuOptionChangeHomeFolder_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.SelectedPath = GlobalInformation.Path;

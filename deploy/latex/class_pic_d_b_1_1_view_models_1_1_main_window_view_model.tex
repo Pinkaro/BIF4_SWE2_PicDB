@@ -1,0 +1,171 @@
+\hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model}{}\section{Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model Class Reference}
+\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model}\index{Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model@{Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model}}
+
+
+Controller. Use this if changes come F\+R\+OM the UI.  
+
+
+Inheritance diagram for Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_pic_d_b_1_1_view_models_1_1_main_window_view_model}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_aec5f805a75b05d57d6c8a057a874519e}{Save\+Current\+Picture}} ()
+\begin{DoxyCompactList}\small\item\em Saves currently selected picture to DB \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_ada19d2955e0f0bfc31920483a53f4850}{Save\+Camera}} (\mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_camera_view_model}{Camera\+View\+Model}} camera)
+\begin{DoxyCompactList}\small\item\em Saves new camera to DB \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a122865147968287045a9390940c1582c}{Update\+Photographer}} (\mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_photographer_view_model}{Photographer\+View\+Model}} photographer\+View\+Model)
+\begin{DoxyCompactList}\small\item\em Updates photographer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a26618fe0f1e947caf7ab7f4ca94941f2}{Delete\+Photographer}} (int id)
+\begin{DoxyCompactList}\small\item\em Deletes photographer with given ID \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+I\+Picture\+View\+Model \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a9c4c52c2062c53ea3cf37be5fdb0842d}{Current\+Picture}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Currently selected picture in the UI \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a1d4dda65b12fb29886d0eab473b6912b}{Title}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Title to be displayed in \mbox{\hyperlink{class_pic_d_b_1_1_main_window}{Main\+Window}} \end{DoxyCompactList}\item 
+I\+Picture\+List\+View\+Model \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_aa061a2f456ed8f7817d6cc2f42726a09}{List}} = new \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_picture_list_view_model}{Picture\+List\+View\+Model}}()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em View\+Model with a list of all Pictures \end{DoxyCompactList}\item 
+I\+Search\+View\+Model \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_af2fd2181d3ef12acc499b32399d6cfee}{Search}} = new \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_search_view_model}{Search\+View\+Model}}()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Search View\+Model \end{DoxyCompactList}\item 
+I\+Camera\+List\+View\+Model \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a6a267de19a02911ad75396c341a2b62a}{Camera\+List}} = new \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_camera_list_view_model}{Camera\+List\+View\+Model}}()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em View\+Model with a list of all cameras \end{DoxyCompactList}\item 
+I\+Photographer\+List\+View\+Model \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a6cbd934dd24539156312657313f4afed}{Photographer\+List}} = new \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_photographer_list_view_model}{Photographer\+List\+View\+Model}}()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em View\+Model witha list of all photographers \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Controller. Use this if changes come F\+R\+OM the UI. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a26618fe0f1e947caf7ab7f4ca94941f2}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a26618fe0f1e947caf7ab7f4ca94941f2}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Delete\+Photographer@{Delete\+Photographer}}
+\index{Delete\+Photographer@{Delete\+Photographer}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Delete\+Photographer()}{DeletePhotographer()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Delete\+Photographer (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Deletes photographer with given ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_ada19d2955e0f0bfc31920483a53f4850}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_ada19d2955e0f0bfc31920483a53f4850}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Save\+Camera@{Save\+Camera}}
+\index{Save\+Camera@{Save\+Camera}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Save\+Camera()}{SaveCamera()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Save\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_camera_view_model}{Camera\+View\+Model}}}]{camera }\end{DoxyParamCaption})}
+
+
+
+Saves new camera to DB 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_aec5f805a75b05d57d6c8a057a874519e}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_aec5f805a75b05d57d6c8a057a874519e}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Save\+Current\+Picture@{Save\+Current\+Picture}}
+\index{Save\+Current\+Picture@{Save\+Current\+Picture}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Save\+Current\+Picture()}{SaveCurrentPicture()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Save\+Current\+Picture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Saves currently selected picture to DB 
+
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a122865147968287045a9390940c1582c}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a122865147968287045a9390940c1582c}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Update\+Photographer@{Update\+Photographer}}
+\index{Update\+Photographer@{Update\+Photographer}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Update\+Photographer()}{UpdatePhotographer()}}
+{\footnotesize\ttfamily void Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Update\+Photographer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_photographer_view_model}{Photographer\+View\+Model}}}]{photographer\+View\+Model }\end{DoxyParamCaption})}
+
+
+
+Updates photographer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em photographer\+View\+Model} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a6a267de19a02911ad75396c341a2b62a}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a6a267de19a02911ad75396c341a2b62a}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Camera\+List@{Camera\+List}}
+\index{Camera\+List@{Camera\+List}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Camera\+List}{CameraList}}
+{\footnotesize\ttfamily I\+Camera\+List\+View\+Model Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Camera\+List = new \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_camera_list_view_model}{Camera\+List\+View\+Model}}()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+View\+Model with a list of all cameras 
+
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a9c4c52c2062c53ea3cf37be5fdb0842d}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a9c4c52c2062c53ea3cf37be5fdb0842d}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Current\+Picture@{Current\+Picture}}
+\index{Current\+Picture@{Current\+Picture}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Current\+Picture}{CurrentPicture}}
+{\footnotesize\ttfamily I\+Picture\+View\+Model Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Current\+Picture\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Currently selected picture in the UI 
+
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_aa061a2f456ed8f7817d6cc2f42726a09}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_aa061a2f456ed8f7817d6cc2f42726a09}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!List@{List}}
+\index{List@{List}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{List}{List}}
+{\footnotesize\ttfamily I\+Picture\+List\+View\+Model Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+List = new \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_picture_list_view_model}{Picture\+List\+View\+Model}}()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+View\+Model with a list of all Pictures 
+
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a6cbd934dd24539156312657313f4afed}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a6cbd934dd24539156312657313f4afed}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Photographer\+List@{Photographer\+List}}
+\index{Photographer\+List@{Photographer\+List}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Photographer\+List}{PhotographerList}}
+{\footnotesize\ttfamily I\+Photographer\+List\+View\+Model Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Photographer\+List = new \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_photographer_list_view_model}{Photographer\+List\+View\+Model}}()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+View\+Model witha list of all photographers 
+
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_af2fd2181d3ef12acc499b32399d6cfee}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_af2fd2181d3ef12acc499b32399d6cfee}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Search@{Search}}
+\index{Search@{Search}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Search}{Search}}
+{\footnotesize\ttfamily I\+Search\+View\+Model Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Search = new \mbox{\hyperlink{class_pic_d_b_1_1_view_models_1_1_search_view_model}{Search\+View\+Model}}()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Search View\+Model 
+
+\mbox{\Hypertarget{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a1d4dda65b12fb29886d0eab473b6912b}\label{class_pic_d_b_1_1_view_models_1_1_main_window_view_model_a1d4dda65b12fb29886d0eab473b6912b}} 
+\index{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}!Title@{Title}}
+\index{Title@{Title}!Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model@{Pic\+D\+B\+::\+View\+Models\+::\+Main\+Window\+View\+Model}}
+\subsubsection{\texorpdfstring{Title}{Title}}
+{\footnotesize\ttfamily string Pic\+D\+B.\+View\+Models.\+Main\+Window\+View\+Model.\+Title\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Title to be displayed in \mbox{\hyperlink{class_pic_d_b_1_1_main_window}{Main\+Window}} 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+A\+A\+A-\/\+Technikum\+\_\+\+B\+W\+I/fourth\+Semester/\+S\+W\+E2/\+S\+W\+E2-\/\+C\+S/\+Pic\+D\+B/\+View\+Models/Main\+Window\+View\+Model.\+cs\end{DoxyCompactItemize}

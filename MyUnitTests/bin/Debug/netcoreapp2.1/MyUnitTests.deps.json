@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v2.1": {
       "MyUnitTests/1.0.0": {
         "dependencies": {
+          "BIF-SWE2.Interfaces": "1.0.0",
           "Microsoft.NET.Test.Sdk": "15.8.0",
           "NUnit": "3.10.1",
           "NUnit3TestAdapter": "3.10.0",
@@ -1505,21 +1506,17 @@
           }
         }
       },
+      "BIF-SWE2.Interfaces/1.0.0": {
+        "runtime": {
+          "BIF-SWE2.Interfaces.dll": {}
+        }
+      },
       "PicDB/1.0.0": {
         "dependencies": {
-          "BIF-SWE2.Interfaces": "1.0.0.0",
           "PdfSharp": "1.32.3057.0"
         },
         "runtime": {
           "PicDB.exe": {}
-        }
-      },
-      "BIF-SWE2.Interfaces.Reference/1.0.0.0": {
-        "runtime": {
-          "BIF-SWE2.Interfaces.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
         }
       },
       "PdfSharp.Reference/1.32.3057.0": {
@@ -2236,13 +2233,13 @@
       "path": "system.xml.xpath.xmldocument/4.3.0",
       "hashPath": "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
     },
-    "PicDB/1.0.0": {
+    "BIF-SWE2.Interfaces/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "BIF-SWE2.Interfaces.Reference/1.0.0.0": {
-      "type": "reference",
+    "PicDB/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     },
